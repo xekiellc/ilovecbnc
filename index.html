@@ -56,7 +56,6 @@
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); background: var(--navy); color: var(--white); overflow-x: hidden; }
 
-    /* ━━━ NAV ━━━ */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       height: 60px; background: rgba(7,26,46,0.96);
@@ -71,7 +70,6 @@
     .nav-links a:hover { color: var(--teal); }
     @media (max-width: 700px) { .nav-links { display: none; } }
 
-    /* ━━━ HERO ━━━ */
     .hero {
       min-height: 100vh; display: flex; flex-direction: column;
       align-items: center; justify-content: center; text-align: center;
@@ -97,21 +95,18 @@
     .btn-outline:hover { background: var(--teal); color: var(--navy); transform: translateY(-2px); }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* ━━━ TICKER ━━━ */
     .ticker { background: var(--teal-dim); padding: 0.65rem 0; overflow: hidden; white-space: nowrap; }
     .ticker-inner { display: inline-block; animation: tickerMove 30s linear infinite; }
     .ticker-inner span { font-size: 0.68rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--navy); padding: 0 1.6rem; }
     .ticker-inner span::before { content: '★'; margin-right: 0.6rem; color: var(--coral); }
     @keyframes tickerMove { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ━━━ SHARED ━━━ */
     section { padding: 5rem 1.5rem; }
     .container { max-width: 1100px; margin: 0 auto; }
     .section-eyebrow { font-size: 0.68rem; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: var(--teal); margin-bottom: 0.5rem; }
     .section-title { font-family: var(--font-head); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 0.6rem; }
     .section-lead { font-size: 1rem; color: var(--muted); max-width: 560px; line-height: 1.75; }
 
-    /* ━━━ TABS ━━━ */
     .tabs-bar { display: flex; flex-wrap: wrap; margin: 2.5rem 0 2rem; border-bottom: 2px solid var(--border); }
     .tab-btn { padding: 0.6rem 1.2rem; font-family: var(--font-body); font-size: 0.72rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border: none; background: transparent; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -2px; transition: color 0.2s, border-color 0.2s; }
     .tab-btn.active { color: var(--teal); border-bottom-color: var(--coral); }
@@ -119,7 +114,6 @@
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
-    /* ━━━ PLACE CARDS ━━━ */
     .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.2rem; }
     .place-card { background: var(--navy-light); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; position: relative; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; }
     .place-card:hover { transform: translateY(-5px); border-color: var(--teal); box-shadow: 0 8px 30px rgba(0,229,200,0.1); }
@@ -135,7 +129,6 @@
     .card-tags { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .tag { font-size: 0.62rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 0.25rem 0.65rem; border-radius: 20px; background: rgba(0,229,200,0.1); color: var(--teal); border: 1px solid rgba(0,229,200,0.2); }
 
-    /* ━━━ EVENTS ━━━ */
     #events { background: var(--navy-mid); }
     .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-top: 2rem; }
     .event-card { background: var(--navy-light); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; display: flex; gap: 1rem; align-items: flex-start; transition: border-color 0.2s, transform 0.2s; }
@@ -152,7 +145,6 @@
     .badge-comm  { background: rgba(255,200,50,0.1); color: #FFD966; border: 1px solid rgba(255,200,50,0.2); }
     .events-note { margin-top: 1.5rem; font-size: 0.78rem; color: var(--muted); padding: 1rem 1.2rem; border: 1px solid var(--border); border-radius: 10px; line-height: 1.6; }
 
-    /* ━━━ COMMUNITY ━━━ */
     #community { background: var(--navy); }
     .community-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
     .comm-card { border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; transition: border-color 0.2s, background 0.2s; }
@@ -161,7 +153,6 @@
     .comm-title { font-family: var(--font-head); font-size: 1rem; font-weight: 800; color: var(--teal); margin-bottom: 0.5rem; }
     .comm-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
 
-    /* ━━━ PHOTO STRIP ━━━ */
     .photo-strip { background: var(--navy-mid); padding: 3.5rem 1.5rem; }
     .photo-strip-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
     .photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; margin-top: 1.5rem; }
@@ -171,7 +162,6 @@
     .photo-slot-icon { font-size: 1.4rem; opacity: 0.3; }
     .photo-slot-text { font-size: 0.62rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
 
-    /* ━━━ NEWS ━━━ */
     #news { background: var(--navy-light); }
     .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
     .news-card { background: var(--navy-mid); border: 1px solid var(--border); border-radius: 12px; padding: 1.3rem; transition: border-color 0.2s, transform 0.2s; }
@@ -183,7 +173,6 @@
     .news-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.7rem; }
     .news-date { font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.22); }
 
-    /* ━━━ ABOUT ━━━ */
     #about { background: var(--coral); }
     #about .section-eyebrow { color: rgba(255,255,255,0.7); }
     #about .section-title { color: white; }
@@ -195,7 +184,6 @@
     .stat-num { font-family: var(--font-head); font-size: 2rem; font-weight: 800; color: white; display: block; }
     .stat-lbl { font-size: 0.62rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-top: 0.3rem; }
 
-    /* ━━━ CONTACT ━━━ */
     #contact { background: var(--navy); }
     .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
     @media (max-width: 700px) { .contact-inner { grid-template-columns: 1fr; gap: 2rem; } }
@@ -212,7 +200,6 @@
     .btn-submit:hover { background: var(--white); transform: translateY(-2px); }
     .form-success { display: none; text-align: center; padding: 2rem; font-family: var(--font-head); font-size: 1.1rem; color: var(--teal); border: 1px solid var(--border); border-radius: 12px; }
 
-    /* ━━━ FOOTER ━━━ */
     footer { background: var(--navy-mid); border-top: 2px solid var(--border); padding: 3rem 1.5rem 2rem; }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
     .footer-logo { font-family: var(--font-head); font-size: 1.8rem; font-weight: 800; color: var(--teal); display: flex; align-items: center; gap: 6px; }
@@ -223,13 +210,11 @@
     .footer-nav a:hover { color: var(--teal); }
     .footer-copy { max-width: 1100px; margin: 1.5rem auto 0; font-size: 0.7rem; color: rgba(255,255,255,0.2); letter-spacing: 0.5px; }
 
-    /* ━━━ ZACH'S CHOICE LEGEND ━━━ */
     .zachs-legend { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,217,102,0.08); border: 1px solid rgba(255,217,102,0.25); border-radius: 20px; padding: 0.4rem 1rem; margin-top: 0.8rem; font-size: 0.72rem; font-weight: 800; color: var(--gold); letter-spacing: 1.5px; text-transform: uppercase; }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">I <span class="heart">♥</span> CBNC</a>
   <ul class="nav-links">
@@ -242,7 +227,6 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-content">
     <div class="hero-eyebrow">Carolina Beach, North Carolina</div>
@@ -265,7 +249,6 @@
   </div>
 </section>
 
-<!-- TICKER -->
 <div class="ticker">
   <div class="ticker-inner">
     <span>Carolina Beach</span><span>The Boardwalk</span><span>Freeman Park</span><span>Fort Fisher</span><span>Live Music</span><span>Community</span><span>Sea Turtles</span><span>Dolphins</span><span>Ghost Crabs</span><span>Summer Nights</span>
@@ -273,7 +256,6 @@
   </div>
 </div>
 
-<!-- GUIDE -->
 <section id="guide">
   <div class="container">
     <p class="section-eyebrow">Visitor Guide</p>
@@ -293,7 +275,7 @@
       <button class="tab-btn" onclick="switchTab(this,'tips')">📍 Local Tips</button>
     </div>
 
-    <!-- ══ EAT ══ -->
+    <!-- EAT -->
     <div class="tab-panel active" id="panel-eat">
       <div class="card-grid">
 
@@ -392,7 +374,8 @@
           </div>
         </div>
 
-        <div class="place-card">
+        <div class="place-card zachs-choice">
+          <span class="zachs-badge">⭐ Zach's Choice</span>
           <div class="card-accent" style="background:var(--teal)"></div>
           <div class="card-body">
             <div class="card-cat">Pizza</div>
@@ -506,7 +489,7 @@
       </div>
     </div>
 
-    <!-- ══ BARS ══ -->
+    <!-- BARS -->
     <div class="tab-panel" id="panel-bars">
       <div class="card-grid">
 
@@ -569,7 +552,8 @@
           </div>
         </div>
 
-        <div class="place-card">
+        <div class="place-card zachs-choice">
+          <span class="zachs-badge">⭐ Zach's Choice</span>
           <div class="card-accent" style="background:#FFD966"></div>
           <div class="card-body">
             <div class="card-cat">Sports Bar</div>
@@ -583,7 +567,7 @@
       </div>
     </div>
 
-    <!-- ══ ENTERTAINMENT ══ -->
+    <!-- ENTERTAINMENT -->
     <div class="tab-panel" id="panel-entertainment">
       <div class="card-grid">
 
@@ -599,28 +583,29 @@
           </div>
         </div>
 
-        <div class="place-card">
+        <div class="place-card zachs-choice">
+          <span class="zachs-badge">⭐ Zach's Choice</span>
           <div class="card-accent" style="background:var(--teal)"></div>
           <div class="card-body">
-            <div class="card-cat">Mini Golf</div>
-            <div class="card-name">More Coming Soon</div>
-            <div class="card-tagline">Know a great spot? Tell us.</div>
-            <p class="card-desc">We're building out the entertainment section with the best of CB. If you know a mini golf course, go-kart track, or other fun spot on the island that belongs here, use the contact form and we'll add it.</p>
-            <div class="card-tags"><span class="tag">Coming Soon</span></div>
+            <div class="card-cat">Mini Golf &amp; Bar</div>
+            <div class="card-name">Putter Pub Mini Golf</div>
+            <div class="card-tagline">801 St. Joseph St · 18 holes · Full bar · Dog friendly</div>
+            <p class="card-desc">Carolina Beach's first outdoor mini golf course with a full bar — 18 challenging holes featuring donuts, stumps, logs, and a giant gorilla. Each hole is sponsored by a local CB business, some with discount codes. Created by the owners of The Dive Food & Spirits. Drinks, dogs, and putts — the perfect CB evening.</p>
+            <div class="card-tags"><span class="tag">Mini Golf</span><span class="tag">Full Bar</span><span class="tag">Dog Friendly</span></div>
           </div>
         </div>
 
       </div>
     </div>
 
-    <!-- ══ SHOPS ══ -->
+    <!-- SHOPS -->
     <div class="tab-panel" id="panel-shop">
       <div style="padding:3rem 0; color:var(--muted); font-size:0.95rem; line-height:1.75;">
         Local shops coming soon. Know a great one? <a href="#contact" style="color:var(--teal)">Tell us about it.</a>
       </div>
     </div>
 
-    <!-- ══ STAY ══ -->
+    <!-- STAY -->
     <div class="tab-panel" id="panel-stay">
       <div class="card-grid">
 
@@ -639,7 +624,7 @@
       </div>
     </div>
 
-    <!-- ══ THINGS TO DO ══ -->
+    <!-- THINGS TO DO -->
     <div class="tab-panel" id="panel-do">
       <div class="card-grid">
 
@@ -690,7 +675,7 @@
       </div>
     </div>
 
-    <!-- ══ LOCAL TIPS ══ -->
+    <!-- LOCAL TIPS -->
     <div class="tab-panel" id="panel-tips">
       <div class="card-grid">
 
