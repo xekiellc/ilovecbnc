@@ -1,55 +1,64 @@
 [
   {
-    "month": "Jun",
-    "day": 7,
-    "name": "The Embers feat. Craig Woolard",
-    "venue": "Shuckin' Shack Oyster Bar",
-    "time": "8pm",
-    "type": "music",
-    "label": "Live Music"
-  },
-  {
-    "month": "Jun",
-    "day": 14,
-    "name": "Carolina Beach Music Festival",
-    "venue": "Lake Park",
-    "time": "All Day",
+    "month": "May",
+    "day": 16,
+    "name": "Pleasure Island Jeep Jam",
+    "venue": "Carolina Beach & Kure Beach",
+    "time": "All Weekend",
     "type": "fest",
     "label": "Festival"
   },
   {
     "month": "Jun",
+    "day": 6,
+    "name": "Carolina Beach Music Festival",
+    "venue": "Carolina Beach Boardwalk",
+    "time": "11am – 4pm",
+    "type": "fest",
+    "label": "Festival"
+  },
+  {
+    "month": "Jun",
+    "day": 11,
+    "name": "Fireworks by the Sea & Boardwalk Blast",
+    "venue": "Gazebo Stage · Boardwalk",
+    "time": "6:30pm music · 9pm fireworks",
+    "type": "comm",
+    "label": "Free Event"
+  },
+  {
+    "month": "Jun",
     "day": 18,
-    "name": "Trivia Night",
-    "venue": "Ol' Luther's",
-    "time": "7pm",
+    "name": "Fireworks by the Sea & Boardwalk Blast",
+    "venue": "Gazebo Stage · Boardwalk",
+    "time": "6:30pm music · 9pm fireworks",
     "type": "comm",
-    "label": "Community"
+    "label": "Free Event"
   },
   {
     "month": "Jun",
-    "day": 21,
-    "name": "Sea Turtle Nest Watch Volunteer Night",
-    "venue": "CB Beach Access",
-    "time": "Dusk",
+    "day": 25,
+    "name": "Fireworks by the Sea & Boardwalk Blast",
+    "venue": "Gazebo Stage · Boardwalk",
+    "time": "6:30pm music · 9pm fireworks",
     "type": "comm",
-    "label": "Community"
+    "label": "Free Event"
   },
   {
-    "month": "Jun",
-    "day": 28,
-    "name": "4th of July Weekend Kickoff · Live Band",
-    "venue": "The Boardwalk",
-    "time": "7pm",
-    "type": "music",
-    "label": "Live Music"
+    "month": "Jul",
+    "day": 2,
+    "name": "Fireworks by the Sea & Boardwalk Blast",
+    "venue": "Gazebo Stage · Boardwalk",
+    "time": "6:30pm music · 9pm fireworks",
+    "type": "comm",
+    "label": "Free Event"
   },
   {
     "month": "Jul",
     "day": 4,
     "name": "4th of July Fireworks",
     "venue": "Carolina Beach · Oceanfront",
-    "time": "Dark",
+    "time": "After Dark",
     "type": "fest",
     "label": "Festival"
   }
