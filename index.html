@@ -81,7 +81,6 @@
       overflow: hidden;
     }
 
-    /* Subtle teal glow circles for depth */
     .hero::before {
       content: '';
       position: absolute;
@@ -539,61 +538,6 @@
       color: var(--teal); border: 1px solid var(--border); border-radius: 12px;
     }
 
-    /* ━━━ AUDIO PLAYER BAR ━━━ */
-    .audio-bar {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 300;
-      background: rgba(7,26,46,0.97);
-      border-top: 1px solid var(--border);
-      backdrop-filter: blur(10px);
-      padding: 0.6rem 1.5rem;
-      display: flex; align-items: center; gap: 1rem;
-      transform: translateY(100%);
-      transition: transform 0.4s ease;
-    }
-    .audio-bar.visible { transform: translateY(0); }
-
-    .audio-btn {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: var(--teal); border: none; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; color: var(--navy); font-size: 0.85rem;
-      transition: background 0.2s;
-    }
-    .audio-btn:hover { background: var(--white); }
-
-    .audio-info { flex: 1; min-width: 0; }
-    .audio-title {
-      font-size: 0.78rem; font-weight: 800; color: var(--teal);
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-    .audio-artist { font-size: 0.65rem; color: var(--muted); letter-spacing: 1px; }
-
-    .audio-progress { flex: 2; display: flex; align-items: center; gap: 0.5rem; }
-    .progress-bar {
-      flex: 1; height: 3px; background: rgba(255,255,255,0.1);
-      border-radius: 3px; cursor: pointer;
-    }
-    .progress-fill { height: 100%; background: var(--teal); border-radius: 3px; width: 0%; }
-    .audio-time { font-size: 0.65rem; color: var(--muted); white-space: nowrap; }
-
-    .audio-vol { display: flex; align-items: center; gap: 0.4rem; }
-    .audio-vol input[type=range] {
-      width: 70px; height: 3px; padding: 0; border: none;
-      background: rgba(255,255,255,0.15); border-radius: 3px;
-    }
-
-    .audio-close {
-      background: none; border: none; cursor: pointer;
-      color: var(--muted); font-size: 1.1rem; flex-shrink: 0;
-      transition: color 0.2s;
-    }
-    .audio-close:hover { color: var(--white); }
-
-    @media (max-width: 600px) {
-      .audio-progress { display: none; }
-      .audio-vol { display: none; }
-    }
-
     /* ━━━ FOOTER ━━━ */
     footer {
       background: var(--navy-mid);
@@ -651,7 +595,6 @@
 <section class="hero">
   <div class="hero-content">
     <div class="hero-eyebrow">Carolina Beach, North Carolina</div>
-
     <div class="hero-logo">
       <span>I</span>
       <svg class="hero-heart" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -659,18 +602,11 @@
       </svg>
       <span>CBNC</span>
     </div>
-
     <p class="hero-sub">People &nbsp;·&nbsp; Businesses &nbsp;·&nbsp; Community</p>
-
     <div class="hero-big4">
-      <div class="hero-big4-row">
-        Carolina Beach <span class="hero-big4-sep">·</span> The Boardwalk
-      </div>
-      <div class="hero-big4-row">
-        Freeman Park <span class="hero-big4-sep">·</span> Fort Fisher
-      </div>
+      <div class="hero-big4-row">Carolina Beach <span class="hero-big4-sep">·</span> The Boardwalk</div>
+      <div class="hero-big4-row">Freeman Park <span class="hero-big4-sep">·</span> Fort Fisher</div>
     </div>
-
     <div class="hero-btns">
       <a href="#guide" class="btn-primary">Explore the Guide</a>
       <a href="#events" class="btn-outline">Music &amp; Events</a>
@@ -705,137 +641,154 @@
     <!-- EAT -->
     <div class="tab-panel active" id="panel-eat">
       <div class="card-grid">
+
         <div class="place-card">
           <div class="card-accent" style="background:var(--coral)"></div>
           <div class="card-body">
-            <div class="card-cat">Boardwalk Legend</div>
-            <div class="card-name">Britt's Donut Shop</div>
-            <div class="card-tagline">Since 1939 · Cash only · Worth every minute</div>
-            <p class="card-desc">Hot glazed donuts made fresh and open right in front of you on the boardwalk every summer night. Lines wrap the corner. If you do one thing on the boardwalk, it's this.</p>
-            <div class="card-tags"><span class="tag">Boardwalk</span><span class="tag">Cash Only</span><span class="tag">Iconic</span></div>
+            <div class="card-cat">Tacos</div>
+            <div class="card-name">Nollie's Taco Joint</div>
+            <div class="card-tagline">So-Cal vibes · Skater soul · Fresh daily</div>
+            <p class="card-desc">Owned by a retired professional skateboarder, Nollie's brings So-Cal taco culture to CB. Menu items named after skate tricks, tortillas gently grilled, ingredients prepped fresh daily. The pulled pork nachos and mahi tacos are legendary. Outdoor patio, relaxed vibe, 98% approval rating. One of the best things on the island.</p>
+            <div class="card-tags"><span class="tag">Tacos</span><span class="tag">Outdoor Patio</span><span class="tag">Local Favorite</span></div>
           </div>
         </div>
+
+        <div class="place-card">
+          <div class="card-accent" style="background:#FFD966"></div>
+          <div class="card-body">
+            <div class="card-cat">BBQ</div>
+            <div class="card-name">Sunny Daze Smokehouse</div>
+            <div class="card-tagline">On the boardwalk · Rooftop views · Live music nights</div>
+            <p class="card-desc">Bold Carolina BBQ right on the boardwalk with rooftop ocean views. Slow-smoked brisket, pulled pork, smoked wings, sidewinder fries, and six house sauces. The second-floor deck is one of the best spots on the island to eat with a view. Opened in 2024 and already a local staple.</p>
+            <div class="card-tags"><span class="tag">BBQ</span><span class="tag">Rooftop</span><span class="tag">Boardwalk</span></div>
+          </div>
+        </div>
+
         <div class="place-card">
           <div class="card-accent" style="background:var(--teal)"></div>
           <div class="card-body">
-            <div class="card-cat">Seafood</div>
-            <div class="card-name">Capt'n Bill's Backyard Grill</div>
-            <div class="card-tagline">Local catch · Casual · Decades of loyalty</div>
-            <p class="card-desc">Fresh-caught local seafood in a no-pretense backyard setting. The shrimp basket and hush puppies are legendary. Regulars have been coming back for decades.</p>
-            <div class="card-tags"><span class="tag">Seafood</span><span class="tag">Casual</span><span class="tag">Local</span></div>
+            <div class="card-cat">Bar &amp; Grill</div>
+            <div class="card-name">The Dive Food &amp; Spirits</div>
+            <div class="card-tagline">Since 2008 · Late night · Family owned</div>
+            <p class="card-desc">Built from scratch in 2008 by Carolina Beach residents, The Dive is a CB original. Voted best wings in Eastern NC — just $1 on Saturdays and Sundays. Great burgers, fish tacos, Greek pitas, and a kitchen open late every night. Music bingo, trivia, karaoke, and DJ on weekends. The real deal.</p>
+            <div class="card-tags"><span class="tag">Wings</span><span class="tag">Late Night</span><span class="tag">Local</span></div>
           </div>
         </div>
+
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--coral)"></div>
+          <div class="card-body">
+            <div class="card-cat">Seafood</div>
+            <div class="card-name">Buzz's Crabshack</div>
+            <div class="card-tagline">Boardwalk classic · Low country · Full bar</div>
+            <p class="card-desc">A retro Carolina Beach boardwalk institution carrying on the legacy of the original Buzz's Roost. Pub food and low country favorites in a cozy bar setting with sidewalk patio seating. Famous crab balls, blue crab cakes, steaks and sandwiches. Frozen rum punch in a souvenir glass in the summer.</p>
+            <div class="card-tags"><span class="tag">Seafood</span><span class="tag">Boardwalk</span><span class="tag">Low Country</span></div>
+          </div>
+        </div>
+
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--teal)"></div>
+          <div class="card-body">
+            <div class="card-cat">Tiki Bar &amp; Restaurant</div>
+            <div class="card-name">SeaWitch Cafe &amp; Tiki Bar</div>
+            <div class="card-tagline">Since 1995 · Live music · Hidden paradise</div>
+            <p class="card-desc">A Carolina Beach landmark since 1995. A 175-seat restaurant and tiki bar built around lush palm trees, steps from the boardwalk. Family-friendly by day, CB's most popular nightlife venue by night with full production band performances. The steam pot — crab clusters, oysters, shrimp, potatoes and corn — is not to be missed.</p>
+            <div class="card-tags"><span class="tag">Tiki Bar</span><span class="tag">Live Music</span><span class="tag">Dog Friendly</span></div>
+          </div>
+        </div>
+
         <div class="place-card">
           <div class="card-accent" style="background:#FFD966"></div>
           <div class="card-body">
             <div class="card-cat">Waterfront Dining</div>
-            <div class="card-name">The Deck House</div>
-            <div class="card-tagline">Fish tacos · Ocean views · Sunset dining</div>
-            <p class="card-desc">Grab a deck table and let the ocean breeze do its thing. Fresh local catch in the tacos and a sunset view that ruins you for everywhere else.</p>
-            <div class="card-tags"><span class="tag">Waterfront</span><span class="tag">Tacos</span><span class="tag">Sunset</span></div>
+            <div class="card-name">Stoked Restaurant</div>
+            <div class="card-tagline">Canal Drive · Dockside · Surf &amp; turf</div>
+            <p class="card-desc">The only restaurant on the island where you can arrive by boat and dock out back. Surf and turf, pasta, fresh seafood, and a menu built for everyone. Weekend brunch, live music, and a free golf cart pickup for guests. Waterside views, great atmosphere, one of CB's most complete dining experiences.</p>
+            <div class="card-tags"><span class="tag">Waterfront</span><span class="tag">Dockside</span><span class="tag">Brunch</span></div>
           </div>
         </div>
-        <div class="place-card">
-          <div class="card-accent" style="background:var(--teal)"></div>
-          <div class="card-body">
-            <div class="card-cat">Coffee &amp; Breakfast</div>
-            <div class="card-name">Beach Brew Co.</div>
-            <div class="card-tagline">Strong espresso · Açaí bowls · Patio life</div>
-            <p class="card-desc">The best way to start a beach day. Strong espresso, açaí bowls, breakfast sandwiches. The patio fills fast — arrive early and claim the corner table.</p>
-            <div class="card-tags"><span class="tag">Coffee</span><span class="tag">Breakfast</span><span class="tag">Patio</span></div>
-          </div>
-        </div>
+
         <div class="place-card">
           <div class="card-accent" style="background:var(--coral)"></div>
           <div class="card-body">
-            <div class="card-cat">Dessert</div>
-            <div class="card-name">Island Creamery</div>
-            <div class="card-tagline">Handcrafted · Seasonal · Family tradition</div>
-            <p class="card-desc">Handcrafted small-batch ice cream with rotating seasonal flavors. The salted caramel is legendary. Post-beach ice cream here becomes an annual family ritual fast.</p>
-            <div class="card-tags"><span class="tag">Ice Cream</span><span class="tag">Family</span><span class="tag">Seasonal</span></div>
+            <div class="card-cat">Burgers</div>
+            <div class="card-name">Island Burgers &amp; Bites</div>
+            <div class="card-tagline">In a gas station · Don't judge · Just go</div>
+            <p class="card-desc">Yes, it's in a gas station. No, that doesn't matter at all. Island Burgers & Bites is one of the most talked-about spots in Carolina Beach — consistently great burgers, friendly service, and the kind of place that surprises everyone who walks in. One of CB's best-kept open secrets.</p>
+            <div class="card-tags"><span class="tag">Burgers</span><span class="tag">Hidden Gem</span><span class="tag">Local Favorite</span></div>
           </div>
         </div>
+
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--teal)"></div>
+          <div class="card-body">
+            <div class="card-cat">Pizza</div>
+            <div class="card-name">Fentoni's Pizzeria</div>
+            <div class="card-tagline">Real pizza · Slices · Stromboli · Calzone</div>
+            <p class="card-desc">Genuine NYC-style pizza with a crispy crust, great sauce, and proper toppings. Slices, pies, stromboli, calzones — the works. Consistently called the best pizza in Carolina Beach. Dine in, take out, or delivery. The kind of pizza place every beach town needs and CB is lucky to have.</p>
+            <div class="card-tags"><span class="tag">Pizza</span><span class="tag">NYC Style</span><span class="tag">Delivery</span></div>
+          </div>
+        </div>
+
+        <div class="place-card">
+          <div class="card-accent" style="background:#FFD966"></div>
+          <div class="card-body">
+            <div class="card-cat">Ice Cream</div>
+            <div class="card-name">Squigley's Ice Cream &amp; Treats</div>
+            <div class="card-tagline">Since 1994 · 4,050+ flavors · Get Squiggled</div>
+            <p class="card-desc">Southeastern NC's most famous ice cream parlor, open since 1994 in a historic pink and white building. The signature Squigley — real vanilla ice cream with your choice of mix-ins squiggled in on the spot — comes in over 4,050 combinations. Cash only. Worth the line. You'll leave with a sticker that says "you've been Squiggled."</p>
+            <div class="card-tags"><span class="tag">Ice Cream</span><span class="tag">Since 1994</span><span class="tag">Cash Only</span></div>
+          </div>
+        </div>
+
       </div>
     </div>
 
     <!-- BARS -->
     <div class="tab-panel" id="panel-bars">
       <div class="card-grid">
+
         <div class="place-card">
           <div class="card-accent" style="background:var(--coral)"></div>
           <div class="card-body">
-            <div class="card-cat">Dive Bar</div>
-            <div class="card-name">Ol' Luther's</div>
-            <div class="card-tagline">Locals only energy · Cold beer · No pretense</div>
-            <p class="card-desc">Walk in a stranger, leave knowing half the room. Cold beer, cold AC, conversations till closing. The quintessential Carolina Beach local bar.</p>
-            <div class="card-tags"><span class="tag">Local</span><span class="tag">Dive</span><span class="tag">Cash Friendly</span></div>
+            <div class="card-cat">Oceanfront Bar &amp; Grill</div>
+            <div class="card-name">Hurricane Alley</div>
+            <div class="card-tagline">Beach views · Live music · Great tacos</div>
+            <p class="card-desc">Stunning oceanfront views, cold drinks, and a staff that genuinely cares about their customers. The Jamaican-style tacos are a standout. Live music and special events keep the energy high. One of the best spots on the island to sit with a drink and watch the ocean.</p>
+            <div class="card-tags"><span class="tag">Oceanfront</span><span class="tag">Live Music</span><span class="tag">Food &amp; Drinks</span></div>
           </div>
         </div>
+
         <div class="place-card">
           <div class="card-accent" style="background:var(--teal)"></div>
           <div class="card-body">
-            <div class="card-cat">Live Music Bar</div>
-            <div class="card-name">Shuckin' Shack Oyster Bar</div>
-            <div class="card-tagline">Oysters · Live music · Summer nights</div>
-            <p class="card-desc">Cold oysters on the half shell, cold drinks, live music on weekends. One of the best summer-night vibes on the island. Get there early on Fridays.</p>
-            <div class="card-tags"><span class="tag">Live Music</span><span class="tag">Oysters</span><span class="tag">Weekends</span></div>
+            <div class="card-cat">Boardwalk Bar</div>
+            <div class="card-name">Pleasure Island Tavern</div>
+            <div class="card-tagline">The PIT · Boardwalk · Since 2016</div>
+            <p class="card-desc">Known as "The PIT," Pleasure Island Tavern opened on 4th of July weekend 2016 and has been a boardwalk fixture ever since. A local pub with live music, great food, and the kind of laid-back energy that makes CB feel like CB. Steps from the ocean, regulars who feel like family.</p>
+            <div class="card-tags"><span class="tag">Boardwalk</span><span class="tag">Live Music</span><span class="tag">Local Pub</span></div>
           </div>
         </div>
+
         <div class="place-card">
           <div class="card-accent" style="background:#FFD966"></div>
           <div class="card-body">
-            <div class="card-cat">Beach Bar</div>
-            <div class="card-name">Pelican Pete's Cantina</div>
-            <div class="card-tagline">Frozen drinks · Waterfront · Sandy feet welcome</div>
-            <p class="card-desc">Frozen margaritas, waterfront seats, sunset that ruins you for everywhere else. Sandy feet welcome — this place wouldn't have it any other way.</p>
-            <div class="card-tags"><span class="tag">Waterfront</span><span class="tag">Frozen Drinks</span><span class="tag">Casual</span></div>
+            <div class="card-cat">Dive Bar</div>
+            <div class="card-name">The Fat Pelican</div>
+            <div class="card-tagline">Voted #1 Dive Bar in NC · Walk-in beer cooler · 400+ beers</div>
+            <p class="card-desc">Voted the #1 dive bar in North Carolina and top 25 in the nation. Walk into a giant cooler and pick your own beer from over 400 options. Dirt floor outdoor space, eclectic salvaged decor, old school arcade games, and a vibe that can't be manufactured. Completely one of a kind. There is no other bar like this anywhere.</p>
+            <div class="card-tags"><span class="tag">Dive Bar</span><span class="tag">400+ Beers</span><span class="tag">Walk-In Cooler</span></div>
           </div>
         </div>
+
       </div>
     </div>
 
     <!-- SHOPS -->
     <div class="tab-panel" id="panel-shop">
       <div class="card-grid">
-        <div class="place-card">
-          <div class="card-accent" style="background:var(--coral)"></div>
-          <div class="card-body">
-            <div class="card-cat">Gifts &amp; Souvenirs</div>
-            <div class="card-name">Shell Shop &amp; Co.</div>
-            <div class="card-tagline">Local shells · Handmade jewelry · Community institution</div>
-            <p class="card-desc">Best selection of local shells and handmade coastal gifts on the island. Staff know their regulars by name. Represents the town's soul better than any other shop.</p>
-            <div class="card-tags"><span class="tag">Local</span><span class="tag">Handmade</span><span class="tag">Gifts</span></div>
-          </div>
-        </div>
-        <div class="place-card">
-          <div class="card-accent" style="background:var(--teal)"></div>
-          <div class="card-body">
-            <div class="card-cat">Surf &amp; Outdoor</div>
-            <div class="card-name">Liquid Logic</div>
-            <div class="card-tagline">Surf gear · Kayaks · Real earned advice</div>
-            <p class="card-desc">Boards, kayaks, and a staff that actually surfs and paddles. The advice here is earned, not Googled. Come here before you get in the water for anything.</p>
-            <div class="card-tags"><span class="tag">Surf</span><span class="tag">Rentals</span><span class="tag">Local Crew</span></div>
-          </div>
-        </div>
-        <div class="place-card">
-          <div class="card-accent" style="background:#FFD966"></div>
-          <div class="card-body">
-            <div class="card-cat">Apparel</div>
-            <div class="card-name">Island Threads</div>
-            <div class="card-tagline">Local designs · Artist-made · Actually wearable</div>
-            <p class="card-desc">Not the generic tourist tee. Artist-designed pieces rooted in actual Carolina Beach culture. The kind of shirt that starts real conversations back home.</p>
-            <div class="card-tags"><span class="tag">Local Art</span><span class="tag">Apparel</span><span class="tag">Unique</span></div>
-          </div>
-        </div>
-        <div class="place-card">
-          <div class="card-accent" style="background:var(--teal)"></div>
-          <div class="card-body">
-            <div class="card-cat">Books &amp; Gifts</div>
-            <div class="card-name">Coastal Currents Books</div>
-            <div class="card-tagline">Local titles · Beach reads · Community hub</div>
-            <p class="card-desc">A proper independent bookshop with a strong local section. Coastal history, local authors, the beach reads you actually want. Community bulletin board inside.</p>
-            <div class="card-tags"><span class="tag">Indie</span><span class="tag">Local</span><span class="tag">Community</span></div>
-          </div>
+        <div style="padding:3rem; text-align:center; color:var(--muted); font-size:0.95rem; line-height:1.75; grid-column:1/-1;">
+          Local shops coming soon. Know a great one? <a href="#contact" style="color:var(--teal)">Tell us about it.</a>
         </div>
       </div>
     </div>
@@ -843,62 +796,47 @@
     <!-- STAY -->
     <div class="tab-panel" id="panel-stay">
       <div class="card-grid">
-        <div class="place-card">
-          <div class="card-accent" style="background:var(--coral)"></div>
-          <div class="card-body">
-            <div class="card-cat">Best for Families</div>
-            <div class="card-name">Vacation Rental Houses</div>
-            <div class="card-tagline">VRBO · Airbnb · Book in January</div>
-            <p class="card-desc">For families, renting a house is the only move. Kitchen, yard, parking, space to breathe. The good ones vanish in January for summer. Set a reminder and move fast.</p>
-            <div class="card-tags"><span class="tag">Families</span><span class="tag">Full Kitchen</span><span class="tag">Book Early</span></div>
-          </div>
-        </div>
+
         <div class="place-card">
           <div class="card-accent" style="background:var(--teal)"></div>
           <div class="card-body">
-            <div class="card-cat">Hotel</div>
-            <div class="card-name">Carolina Beach Hotel</div>
-            <div class="card-tagline">Beachfront · Pool · Boardwalk steps away</div>
-            <p class="card-desc">Right on the ocean with direct beach access and a pool. Walking distance to the boardwalk. Great if you want hotel amenities without leaving the island.</p>
-            <div class="card-tags"><span class="tag">Beachfront</span><span class="tag">Pool</span><span class="tag">Boardwalk</span></div>
+            <div class="card-cat">Motel</div>
+            <div class="card-name">Dolphin Lane Motel</div>
+            <div class="card-tagline">318 Carolina Beach Ave N · Classic CB stay</div>
+            <p class="card-desc">A classic Carolina Beach motel that puts you right in the heart of the island. Rooms, efficiencies, and cottages available — the kind of unpretentious, comfortable place that fits the CB spirit perfectly. Everything you need for a great beach trip without the resort price tag. A true island stay.</p>
+            <div class="card-tags"><span class="tag">Motel</span><span class="tag">Cottages</span><span class="tag">Classic CB</span></div>
           </div>
         </div>
-        <div class="place-card">
-          <div class="card-accent" style="background:#4CAF84"></div>
-          <div class="card-body">
-            <div class="card-cat">Camping</div>
-            <div class="card-name">Carolina Beach State Park</div>
-            <div class="card-tagline">Full hookups · Marsh views · Reserve early</div>
-            <p class="card-desc">Camp inside the state park. Full hookups available. Waking up to marsh sounds and birdsong before heading to the beach is one of those quiet magic things.</p>
-            <div class="card-tags"><span class="tag">Nature</span><span class="tag">Budget</span><span class="tag">Reserve Early</span></div>
-          </div>
-        </div>
+
       </div>
     </div>
 
     <!-- THINGS TO DO -->
     <div class="tab-panel" id="panel-do">
       <div class="card-grid">
+
         <div class="place-card">
           <div class="card-accent" style="background:var(--coral)"></div>
           <div class="card-body">
             <div class="card-cat">Iconic Experience</div>
             <div class="card-name">Freeman Park</div>
             <div class="card-tagline">Drive on the beach · 4WD required · Permit required</div>
-            <p class="card-desc">Drive your 4WD vehicle right onto the beach at the northern end of the island. Fire pits at night, pelicans by day. Let tires down to ~20 PSI before hitting sand.</p>
+            <p class="card-desc">Drive your 4WD vehicle right onto the beach at the northern end of the island. Fire pits at night, pelicans by day. Let tires down to ~20 PSI before hitting sand. Bring a pump to reinflate before leaving.</p>
             <div class="card-tags"><span class="tag">4WD</span><span class="tag">Permit</span><span class="tag">Must Do</span></div>
           </div>
         </div>
+
         <div class="place-card">
           <div class="card-accent" style="background:var(--teal)"></div>
           <div class="card-body">
             <div class="card-cat">Nature</div>
             <div class="card-name">Carolina Beach State Park</div>
             <div class="card-tagline">Venus flytraps · Hiking · Marsh trails</div>
-            <p class="card-desc">One of the only places on Earth to see wild Venus flytraps. Miles of trails, a marina, and some of the most beautiful natural scenery on the Cape Fear coast.</p>
+            <p class="card-desc">One of the only places on Earth to see wild Venus flytraps. Miles of trails, a marina, and some of the most beautiful natural scenery on the whole Cape Fear coast.</p>
             <div class="card-tags"><span class="tag">Hiking</span><span class="tag">Nature</span><span class="tag">Hidden Gem</span></div>
           </div>
         </div>
+
         <div class="place-card">
           <div class="card-accent" style="background:#FFD966"></div>
           <div class="card-body">
@@ -909,6 +847,7 @@
             <div class="card-tags"><span class="tag">Family</span><span class="tag">Education</span><span class="tag">Fort Fisher</span></div>
           </div>
         </div>
+
         <div class="place-card">
           <div class="card-accent" style="background:var(--teal)"></div>
           <div class="card-body">
@@ -919,12 +858,14 @@
             <div class="card-tags"><span class="tag">Wildlife</span><span class="tag">Free</span><span class="tag">ICW</span></div>
           </div>
         </div>
+
       </div>
     </div>
 
     <!-- TIPS -->
     <div class="tab-panel" id="panel-tips">
       <div class="card-grid">
+
         <div class="place-card">
           <div class="card-accent" style="background:var(--coral)"></div>
           <div class="card-body">
@@ -935,6 +876,7 @@
             <div class="card-tags"><span class="tag">Freeman Park</span><span class="tag">Pro Tip</span></div>
           </div>
         </div>
+
         <div class="place-card">
           <div class="card-accent" style="background:#FFD966"></div>
           <div class="card-body">
@@ -945,6 +887,7 @@
             <div class="card-tags"><span class="tag">Sunrise</span><span class="tag">Photography</span><span class="tag">North End</span></div>
           </div>
         </div>
+
         <div class="place-card">
           <div class="card-accent" style="background:var(--teal)"></div>
           <div class="card-body">
@@ -955,6 +898,7 @@
             <div class="card-tags"><span class="tag">Shoulder Season</span><span class="tag">Best Value</span></div>
           </div>
         </div>
+
         <div class="place-card">
           <div class="card-accent" style="background:var(--coral)"></div>
           <div class="card-body">
@@ -965,6 +909,7 @@
             <div class="card-tags"><span class="tag">Night</span><span class="tag">Kids</span><span class="tag">Free</span></div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -1042,7 +987,7 @@
       <div class="comm-card">
         <div class="comm-icon">🎵</div>
         <div class="comm-title">Live Music Scene</div>
-        <p class="comm-desc">CB has a real live music culture — beach music, shag dancing, local bands on weeknights. The Shuckin' Shack and boardwalk bars keep it alive all summer long.</p>
+        <p class="comm-desc">CB has a real live music culture — beach music, shag dancing, local bands on weeknights. The SeaWitch, Hurricane Alley, and boardwalk bars keep it alive all summer long.</p>
       </div>
       <div class="comm-card">
         <div class="comm-icon">🎣</div>
@@ -1171,29 +1116,6 @@
   </div>
   <div class="footer-copy">© 2025 ilovecbnc.com · Made with ♥ by a family that never wants to leave · Not affiliated with any government entity.</div>
 </footer>
-
-<!-- ━━━ AUDIO — uncomment when you have the mp3 ━━━ -->
-<!--
-<div class="audio-bar" id="audio-bar">
-  <button class="audio-btn" id="audio-play-btn" onclick="togglePlay()">▶</button>
-  <div class="audio-info">
-    <div class="audio-title">Song Title Here</div>
-    <div class="audio-artist">Artist Name · ilovecbnc.com</div>
-  </div>
-  <div class="audio-progress">
-    <div class="progress-bar" id="progress-bar" onclick="seekAudio(event)">
-      <div class="progress-fill" id="progress-fill"></div>
-    </div>
-    <div class="audio-time" id="audio-time">0:00</div>
-  </div>
-  <div class="audio-vol">
-    <span style="font-size:0.8rem">🔊</span>
-    <input type="range" id="vol-slider" min="0" max="1" step="0.05" value="0.6" oninput="setVolume(this.value)" />
-  </div>
-  <button class="audio-close" onclick="closePlayer()">✕</button>
-</div>
-<audio id="site-audio" src="/audio/song.mp3" preload="none"></audio>
--->
 
 <script>
   /* ━━━ TABS ━━━ */
