@@ -1,0 +1,95 @@
+name: Refresh Carolina Beach News
+
+on:
+  schedule:
+    - cron: '0 9,15,21 * * *'
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch & Filter News
+        env:
+          NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
+        run: |
+          python3 - <<'EOF'
+          import urllib.request, urllib.parse, json, os, datetime
+
+          key = os.environ["NEWS_API_KEY"]
+
+          QUERIES = [
+            '"Carolina Beach" NC',
+            '"Carolina Beach" "North Carolina"',
+            '"Freeman Park" "Carolina Beach"',
+            '"Carolina Beach" beach boardwalk',
+          ]
+
+          BLOCK_KEYWORDS = [
+            'mayor', 'city council', 'councilman', 'councilwoman', 'councilmember',
+            'town council', 'commissioner', 'alderman', 'municipal', 'city hall',
+            'ordinance', 'rezoning', 'zoning', 'ballot', 'election', 'vote',
+            'incumbent', 'wilmington', 'new hanover county', 'county commission',
+            'board of', 'public hearing', 'annexation',
+          ]
+
+          def is_blocked(article):
+            text = (
+              (article.get('title') or '') + ' ' +
+              (article.get('description') or '') + ' ' +
+              (article.get('content') or '')
+            ).lower()
+            return any(kw in text for kw in BLOCK_KEYWORDS)
+
+          articles = []
+          seen_urls = set()
+
+          for q in QUERIES:
+            url = (
+              'https://newsapi.org/v2/everything'
+              '?q=' + urllib.parse.quote(q) +
+              '&language=en'
+              '&sortBy=publishedAt'
+              '&pageSize=15'
+              '&apiKey=' + key
+            )
+            try:
+              with urllib.request.urlopen(url, timeout=12) as r:
+                data = json.loads(r.read())
+                for a in data.get('articles', []):
+                  url_val = a.get('url', '')
+                  if not url_val or url_val in seen_urls:
+                    continue
+                  if is_blocked(a):
+                    print(f'  BLOCKED: {a.get("title","")[:60]}')
+                    continue
+                  seen_urls.add(url_val)
+                  articles.append({
+                    'title':       a.get('title', ''),
+                    'url':         url_val,
+                    'source':      a.get('source', {}),
+                    'publishedAt': a.get('publishedAt', ''),
+                    'description': a.get('description', ''),
+                  })
+            except Exception as e:
+              print(f'Error on query "{q}": {e}')
+
+          articles.sort(key=lambda x: x.get('publishedAt', ''), reverse=True)
+          articles = articles[:30]
+
+          with open('news.json', 'w') as f:
+            json.dump(articles, f, indent=2)
+
+          print(f'Done: {len(articles)} articles written.')
+          print(f'Updated: {datetime.datetime.utcnow().isoformat()}Z')
+          EOF
+
+      - name: Commit news.json
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add news.json
+          git diff --staged --quiet || git commit -m "chore: refresh CB news $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push
