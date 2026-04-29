@@ -1,1 +1,56 @@
-[]
+[
+  {
+    "month": "Jun",
+    "day": 7,
+    "name": "The Embers feat. Craig Woolard",
+    "venue": "Shuckin' Shack Oyster Bar",
+    "time": "8pm",
+    "type": "music",
+    "label": "Live Music"
+  },
+  {
+    "month": "Jun",
+    "day": 14,
+    "name": "Carolina Beach Music Festival",
+    "venue": "Lake Park",
+    "time": "All Day",
+    "type": "fest",
+    "label": "Festival"
+  },
+  {
+    "month": "Jun",
+    "day": 18,
+    "name": "Trivia Night",
+    "venue": "Ol' Luther's",
+    "time": "7pm",
+    "type": "comm",
+    "label": "Community"
+  },
+  {
+    "month": "Jun",
+    "day": 21,
+    "name": "Sea Turtle Nest Watch Volunteer Night",
+    "venue": "CB Beach Access",
+    "time": "Dusk",
+    "type": "comm",
+    "label": "Community"
+  },
+  {
+    "month": "Jun",
+    "day": 28,
+    "name": "4th of July Weekend Kickoff · Live Band",
+    "venue": "The Boardwalk",
+    "time": "7pm",
+    "type": "music",
+    "label": "Live Music"
+  },
+  {
+    "month": "Jul",
+    "day": 4,
+    "name": "4th of July Fireworks",
+    "venue": "Carolina Beach · Oceanfront",
+    "time": "Dark",
+    "type": "fest",
+    "label": "Festival"
+  }
+]
