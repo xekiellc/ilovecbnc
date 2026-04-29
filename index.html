@@ -5,10 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>I ♥ CBNC — Carolina Beach, NC</title>
   <meta name="description" content="The people, businesses, music, and culture of Carolina Beach, NC. A community guide built with love." />
+
+  <!-- OG / Social -->
   <meta property="og:title" content="I ♥ CBNC — Carolina Beach, NC" />
-  <meta property="og:description" content="The people, businesses, music, and culture of Carolina Beach, NC." />
+  <meta property="og:description" content="Real places. Real people. Real Carolina Beach." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ilovecbnc.com" />
+  <meta property="og:image" content="https://ilovecbnc.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="I ♥ CBNC — Carolina Beach, NC" />
+  <meta name="twitter:description" content="Real places. Real people. Real Carolina Beach." />
+  <meta name="twitter:image" content="https://ilovecbnc.com/og-image.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23071A2E'/%3E%3Cpath fill='%23FF5757' d='M16 26S6 18.5 6 12.5a5.5 5.5 0 0 1 10-3.12A5.5 5.5 0 0 1 26 12.5C26 18.5 16 26 16 26z'/%3E%3C/svg%3E" />
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TQ0MT92VN9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TQ0MT92VN9');
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
@@ -22,6 +44,7 @@
       --teal-dim:    #00BFA5;
       --coral:       #FF5757;
       --coral-dim:   #CC3E3E;
+      --gold:        #FFD966;
       --white:       #FFFFFF;
       --muted:       rgba(255,255,255,0.48);
       --border:      rgba(0,229,200,0.15);
@@ -33,6 +56,7 @@
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); background: var(--navy); color: var(--white); overflow-x: hidden; }
 
+    /* ━━━ NAV ━━━ */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       height: 60px; background: rgba(7,26,46,0.96);
@@ -47,6 +71,7 @@
     .nav-links a:hover { color: var(--teal); }
     @media (max-width: 700px) { .nav-links { display: none; } }
 
+    /* ━━━ HERO ━━━ */
     .hero {
       min-height: 100vh; display: flex; flex-direction: column;
       align-items: center; justify-content: center; text-align: center;
@@ -57,7 +82,6 @@
     .hero::before { content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(0,229,200,0.06) 0%, transparent 70%); top: -100px; right: -100px; pointer-events: none; }
     .hero::after  { content: ''; position: absolute; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(255,87,87,0.05) 0%, transparent 70%); bottom: -50px; left: -50px; pointer-events: none; }
     .hero-content { position: relative; z-index: 2; }
-
     .hero-eyebrow { display: inline-block; border: 1.5px solid var(--teal); color: var(--teal); font-size: 0.68rem; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; padding: 5px 18px; border-radius: 30px; margin-bottom: 1.4rem; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
     .hero-logo { display: flex; align-items: center; justify-content: center; gap: 0.12em; font-family: var(--font-head); font-size: clamp(4.5rem, 14vw, 9rem); font-weight: 800; line-height: 1; color: var(--white); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
     .hero-heart { width: 0.82em; height: 0.82em; flex-shrink: 0; animation: heartbeat 2.4s ease-in-out 1.2s infinite; filter: drop-shadow(0 3px 12px rgba(255,87,87,0.5)); }
@@ -67,25 +91,27 @@
     .hero-big4-row { font-family: var(--font-head); font-size: clamp(1rem, 2.8vw, 1.35rem); font-weight: 700; color: var(--teal); letter-spacing: 0.5px; padding: 0.2rem 0; }
     .hero-big4-sep { color: var(--coral); margin: 0 0.55rem; opacity: 0.9; }
     .hero-btns { margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.7s ease 0.8s forwards; }
-
     .btn-primary { background: var(--coral); color: white; font-family: var(--font-body); font-size: 0.78rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 0.85rem 2rem; border-radius: 30px; border: none; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; box-shadow: 0 4px 20px rgba(255,87,87,0.35); }
     .btn-primary:hover { background: var(--coral-dim); transform: translateY(-2px); }
     .btn-outline { background: transparent; color: var(--teal); font-family: var(--font-body); font-size: 0.78rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 0.85rem 2rem; border-radius: 30px; border: 2px solid var(--teal); cursor: pointer; text-decoration: none; transition: background 0.2s, color 0.2s, transform 0.15s; }
     .btn-outline:hover { background: var(--teal); color: var(--navy); transform: translateY(-2px); }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
+    /* ━━━ TICKER ━━━ */
     .ticker { background: var(--teal-dim); padding: 0.65rem 0; overflow: hidden; white-space: nowrap; }
     .ticker-inner { display: inline-block; animation: tickerMove 30s linear infinite; }
     .ticker-inner span { font-size: 0.68rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--navy); padding: 0 1.6rem; }
     .ticker-inner span::before { content: '★'; margin-right: 0.6rem; color: var(--coral); }
     @keyframes tickerMove { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
+    /* ━━━ SHARED ━━━ */
     section { padding: 5rem 1.5rem; }
     .container { max-width: 1100px; margin: 0 auto; }
     .section-eyebrow { font-size: 0.68rem; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: var(--teal); margin-bottom: 0.5rem; }
     .section-title { font-family: var(--font-head); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 0.6rem; }
     .section-lead { font-size: 1rem; color: var(--muted); max-width: 560px; line-height: 1.75; }
 
+    /* ━━━ TABS ━━━ */
     .tabs-bar { display: flex; flex-wrap: wrap; margin: 2.5rem 0 2rem; border-bottom: 2px solid var(--border); }
     .tab-btn { padding: 0.6rem 1.2rem; font-family: var(--font-body); font-size: 0.72rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border: none; background: transparent; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -2px; transition: color 0.2s, border-color 0.2s; }
     .tab-btn.active { color: var(--teal); border-bottom-color: var(--coral); }
@@ -93,9 +119,13 @@
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
+    /* ━━━ PLACE CARDS ━━━ */
     .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.2rem; }
-    .place-card { background: var(--navy-light); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; }
+    .place-card { background: var(--navy-light); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; position: relative; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; }
     .place-card:hover { transform: translateY(-5px); border-color: var(--teal); box-shadow: 0 8px 30px rgba(0,229,200,0.1); }
+    .place-card.zachs-choice { border-color: var(--gold); box-shadow: 0 0 0 1px rgba(255,217,102,0.3); }
+    .place-card.zachs-choice:hover { border-color: var(--gold); box-shadow: 0 8px 30px rgba(255,217,102,0.2); }
+    .zachs-badge { position: absolute; top: 12px; right: 12px; z-index: 10; background: var(--gold); color: var(--navy); font-family: var(--font-body); font-size: 0.55rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 20px; display: flex; align-items: center; gap: 3px; box-shadow: 0 2px 8px rgba(255,217,102,0.4); }
     .card-accent { height: 4px; }
     .card-body { padding: 1.2rem 1.4rem 1.4rem; }
     .card-cat { font-size: 0.6rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: var(--teal); margin-bottom: 0.5rem; }
@@ -105,6 +135,7 @@
     .card-tags { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .tag { font-size: 0.62rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 0.25rem 0.65rem; border-radius: 20px; background: rgba(0,229,200,0.1); color: var(--teal); border: 1px solid rgba(0,229,200,0.2); }
 
+    /* ━━━ EVENTS ━━━ */
     #events { background: var(--navy-mid); }
     .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-top: 2rem; }
     .event-card { background: var(--navy-light); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; display: flex; gap: 1rem; align-items: flex-start; transition: border-color 0.2s, transform 0.2s; }
@@ -121,6 +152,7 @@
     .badge-comm  { background: rgba(255,200,50,0.1); color: #FFD966; border: 1px solid rgba(255,200,50,0.2); }
     .events-note { margin-top: 1.5rem; font-size: 0.78rem; color: var(--muted); padding: 1rem 1.2rem; border: 1px solid var(--border); border-radius: 10px; line-height: 1.6; }
 
+    /* ━━━ COMMUNITY ━━━ */
     #community { background: var(--navy); }
     .community-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
     .comm-card { border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; transition: border-color 0.2s, background 0.2s; }
@@ -129,6 +161,7 @@
     .comm-title { font-family: var(--font-head); font-size: 1rem; font-weight: 800; color: var(--teal); margin-bottom: 0.5rem; }
     .comm-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
 
+    /* ━━━ PHOTO STRIP ━━━ */
     .photo-strip { background: var(--navy-mid); padding: 3.5rem 1.5rem; }
     .photo-strip-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
     .photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; margin-top: 1.5rem; }
@@ -138,6 +171,7 @@
     .photo-slot-icon { font-size: 1.4rem; opacity: 0.3; }
     .photo-slot-text { font-size: 0.62rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
 
+    /* ━━━ NEWS ━━━ */
     #news { background: var(--navy-light); }
     .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
     .news-card { background: var(--navy-mid); border: 1px solid var(--border); border-radius: 12px; padding: 1.3rem; transition: border-color 0.2s, transform 0.2s; }
@@ -149,6 +183,7 @@
     .news-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.7rem; }
     .news-date { font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.22); }
 
+    /* ━━━ ABOUT ━━━ */
     #about { background: var(--coral); }
     #about .section-eyebrow { color: rgba(255,255,255,0.7); }
     #about .section-title { color: white; }
@@ -160,6 +195,7 @@
     .stat-num { font-family: var(--font-head); font-size: 2rem; font-weight: 800; color: white; display: block; }
     .stat-lbl { font-size: 0.62rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-top: 0.3rem; }
 
+    /* ━━━ CONTACT ━━━ */
     #contact { background: var(--navy); }
     .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
     @media (max-width: 700px) { .contact-inner { grid-template-columns: 1fr; gap: 2rem; } }
@@ -176,6 +212,7 @@
     .btn-submit:hover { background: var(--white); transform: translateY(-2px); }
     .form-success { display: none; text-align: center; padding: 2rem; font-family: var(--font-head); font-size: 1.1rem; color: var(--teal); border: 1px solid var(--border); border-radius: 12px; }
 
+    /* ━━━ FOOTER ━━━ */
     footer { background: var(--navy-mid); border-top: 2px solid var(--border); padding: 3rem 1.5rem 2rem; }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
     .footer-logo { font-family: var(--font-head); font-size: 1.8rem; font-weight: 800; color: var(--teal); display: flex; align-items: center; gap: 6px; }
@@ -185,10 +222,14 @@
     .footer-nav a { color: var(--muted); text-decoration: none; font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
     .footer-nav a:hover { color: var(--teal); }
     .footer-copy { max-width: 1100px; margin: 1.5rem auto 0; font-size: 0.7rem; color: rgba(255,255,255,0.2); letter-spacing: 0.5px; }
+
+    /* ━━━ ZACH'S CHOICE LEGEND ━━━ */
+    .zachs-legend { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,217,102,0.08); border: 1px solid rgba(255,217,102,0.25); border-radius: 20px; padding: 0.4rem 1rem; margin-top: 0.8rem; font-size: 0.72rem; font-weight: 800; color: var(--gold); letter-spacing: 1.5px; text-transform: uppercase; }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">I <span class="heart">♥</span> CBNC</a>
   <ul class="nav-links">
@@ -201,6 +242,7 @@
   </ul>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-content">
     <div class="hero-eyebrow">Carolina Beach, North Carolina</div>
@@ -223,6 +265,7 @@
   </div>
 </section>
 
+<!-- TICKER -->
 <div class="ticker">
   <div class="ticker-inner">
     <span>Carolina Beach</span><span>The Boardwalk</span><span>Freeman Park</span><span>Fort Fisher</span><span>Live Music</span><span>Community</span><span>Sea Turtles</span><span>Dolphins</span><span>Ghost Crabs</span><span>Summer Nights</span>
@@ -230,11 +273,15 @@
   </div>
 </div>
 
+<!-- GUIDE -->
 <section id="guide">
   <div class="container">
     <p class="section-eyebrow">Visitor Guide</p>
     <h2 class="section-title">The Best of Carolina Beach</h2>
-    <p class="section-lead">Real picks. Local knowledge. No fluff — and zero government spin.</p>
+    <p class="section-lead">Real places. Real people. Real Carolina Beach.</p>
+    <div style="margin-top:0.5rem;">
+      <span class="zachs-legend">⭐ Zach's Choice — personal favorites</span>
+    </div>
 
     <div class="tabs-bar">
       <button class="tab-btn active" onclick="switchTab(this,'eat')">🍽 Eat</button>
@@ -246,12 +293,25 @@
       <button class="tab-btn" onclick="switchTab(this,'tips')">📍 Local Tips</button>
     </div>
 
-    <!-- EAT -->
+    <!-- ══ EAT ══ -->
     <div class="tab-panel active" id="panel-eat">
       <div class="card-grid">
 
-        <div class="place-card">
+        <div class="place-card zachs-choice">
+          <span class="zachs-badge">⭐ Zach's Choice</span>
           <div class="card-accent" style="background:var(--coral)"></div>
+          <div class="card-body">
+            <div class="card-cat">Boardwalk Legend</div>
+            <div class="card-name">Britt's Donut Shop</div>
+            <div class="card-tagline">Since 1939 · Cash only · Worth every minute</div>
+            <p class="card-desc">Hot glazed donuts made fresh and open right in front of you on the boardwalk every summer night. Lines wrap the corner. If you do one thing on the boardwalk, it's this. Since 1939 and nothing has changed — that's the whole point.</p>
+            <div class="card-tags"><span class="tag">Boardwalk</span><span class="tag">Cash Only</span><span class="tag">Since 1939</span></div>
+          </div>
+        </div>
+
+        <div class="place-card zachs-choice">
+          <span class="zachs-badge">⭐ Zach's Choice</span>
+          <div class="card-accent" style="background:var(--teal)"></div>
           <div class="card-body">
             <div class="card-cat">Tacos</div>
             <div class="card-name">Nollie's Taco Joint</div>
@@ -261,7 +321,8 @@
           </div>
         </div>
 
-        <div class="place-card">
+        <div class="place-card zachs-choice">
+          <span class="zachs-badge">⭐ Zach's Choice</span>
           <div class="card-accent" style="background:#FFD966"></div>
           <div class="card-body">
             <div class="card-cat">BBQ</div>
@@ -272,7 +333,8 @@
           </div>
         </div>
 
-        <div class="place-card">
+        <div class="place-card zachs-choice">
+          <span class="zachs-badge">⭐ Zach's Choice</span>
           <div class="card-accent" style="background:var(--teal)"></div>
           <div class="card-body">
             <div class="card-cat">Bar &amp; Grill</div>
@@ -283,7 +345,8 @@
           </div>
         </div>
 
-        <div class="place-card">
+        <div class="place-card zachs-choice">
+          <span class="zachs-badge">⭐ Zach's Choice</span>
           <div class="card-accent" style="background:var(--coral)"></div>
           <div class="card-body">
             <div class="card-cat">Seafood</div>
@@ -294,7 +357,8 @@
           </div>
         </div>
 
-        <div class="place-card">
+        <div class="place-card zachs-choice">
+          <span class="zachs-badge">⭐ Zach's Choice</span>
           <div class="card-accent" style="background:var(--teal)"></div>
           <div class="card-body">
             <div class="card-cat">Tiki Bar &amp; Restaurant</div>
@@ -316,7 +380,8 @@
           </div>
         </div>
 
-        <div class="place-card">
+        <div class="place-card zachs-choice">
+          <span class="zachs-badge">⭐ Zach's Choice</span>
           <div class="card-accent" style="background:var(--coral)"></div>
           <div class="card-body">
             <div class="card-cat">Burgers</div>
@@ -332,13 +397,14 @@
           <div class="card-body">
             <div class="card-cat">Pizza</div>
             <div class="card-name">Fentoni's Pizzeria</div>
-            <div class="card-tagline">Real pizza · Slices · Stromboli · Calzone</div>
-            <p class="card-desc">Genuine NYC-style pizza with a crispy crust, great sauce, and proper toppings. Slices, pies, stromboli, calzones — the works. Consistently called the best pizza in Carolina Beach. Dine in, take out, or delivery. The kind of pizza place every beach town needs.</p>
+            <div class="card-tagline">Ranked #3 NY Pizzeria in NC · Boardwalk · Slices</div>
+            <p class="card-desc">Genuine NYC-style pizza ranked #3 NY Pizzeria in all of NC by the Washington Post. Slices, pies, stromboli, calzones — the works. Owned by Pleasure Island residents who dreamed of this for years. Dine in, take out, or delivery. The kind of pizza place every beach town needs.</p>
             <div class="card-tags"><span class="tag">Pizza</span><span class="tag">NYC Style</span><span class="tag">Delivery</span></div>
           </div>
         </div>
 
-        <div class="place-card">
+        <div class="place-card zachs-choice">
+          <span class="zachs-badge">⭐ Zach's Choice</span>
           <div class="card-accent" style="background:#FFD966"></div>
           <div class="card-body">
             <div class="card-cat">Ice Cream</div>
@@ -355,7 +421,7 @@
             <div class="card-cat">Irish Pub</div>
             <div class="card-name">HopLite Pub &amp; Restaurant</div>
             <div class="card-tagline">Since 2010 · Irish favorites · Locals' choice</div>
-            <p class="card-desc">A genuine neighborhood Irish pub serving excellent food at great prices. Bangers and mash, Reuben egg rolls, shepherd's pie, fish and chips, and the best onion rings around. Daily drink and food specials, music bingo on Wednesdays, and a newly renovated game room. No tourist trappings — just consistently great food and value.</p>
+            <p class="card-desc">A genuine neighborhood Irish pub serving excellent food at great prices. Bangers and mash, Reuben egg rolls, shepherd's pie, fish and chips, and the best onion rings around. Daily drink and food specials, music bingo on Wednesdays, and a newly renovated game room. No tourist trappings — just great food and real value.</p>
             <div class="card-tags"><span class="tag">Irish Pub</span><span class="tag">Local</span><span class="tag">Dog Friendly Patio</span></div>
           </div>
         </div>
@@ -365,31 +431,99 @@
           <div class="card-body">
             <div class="card-cat">Oceanfront Dining</div>
             <div class="card-name">Ocean Grill &amp; Tiki Bar</div>
-            <div class="card-tagline">Named one of America's Best Beach Bars · Pier dining · Panoramic views</div>
+            <div class="card-tagline">Named one of America's Best Beach Bars · Pier dining</div>
             <p class="card-desc">Named one of "America's Best Beach Bars" by Thrillist. Perched directly on the oceanfront with a tiki bar standing on the remnants of the historic Center Pier. Panoramic views of the NC shoreline upstairs, breezy patio dining downstairs. Tiki shows from local and regional bands all summer long.</p>
             <div class="card-tags"><span class="tag">Oceanfront</span><span class="tag">Tiki Bar</span><span class="tag">Live Music</span></div>
+          </div>
+        </div>
+
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--teal)"></div>
+          <div class="card-body">
+            <div class="card-cat">Bar &amp; Kitchen</div>
+            <div class="card-name">The Spot</div>
+            <div class="card-tagline">1006 S Lake Park Blvd · Scratch-made · Late night</div>
+            <p class="card-desc">A food-driven bar where friends meet and make friends. Fresh scratch-made dishes — traditional American fare plus creative daily specials. The black & red wings are legendary, the Hatteras clam chowder is the real deal. Dog-friendly covered patio, trivia nights, and a staff that makes you feel like a regular from the first visit.</p>
+            <div class="card-tags"><span class="tag">Wings</span><span class="tag">Daily Specials</span><span class="tag">Dog Friendly</span></div>
+          </div>
+        </div>
+
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--coral)"></div>
+          <div class="card-body">
+            <div class="card-cat">Boardwalk Restaurant &amp; Pub</div>
+            <div class="card-name">Salty's Restaurant &amp; Pub</div>
+            <div class="card-tagline">Since 1994 · Boardwalk · Smash Burgers · Calabash Seafood</div>
+            <p class="card-desc">A Carolina Beach Boardwalk staple since 1994. Calabash-style seafood, pork chops, and the famous Salty's Smash Burger served with Southern sides. Laid-back beachy atmosphere, live music, creative cocktails, and oceanfront views that never get old.</p>
+            <div class="card-tags"><span class="tag">Since 1994</span><span class="tag">Boardwalk</span><span class="tag">Smash Burger</span></div>
+          </div>
+        </div>
+
+        <div class="place-card">
+          <div class="card-accent" style="background:#FFD966"></div>
+          <div class="card-body">
+            <div class="card-cat">Bar &amp; Grill</div>
+            <div class="card-name">CBGB — Carolina Beach Grill &amp; Bar</div>
+            <div class="card-tagline">Steps from the boardwalk · Family friendly · Live music</div>
+            <p class="card-desc">Right off the boardwalk and built for the whole family. Fresh seafood, cold cocktails and beers, indoor and outdoor seating, and live music. The kind of place you end up staying longer than you planned, which is exactly the point.</p>
+            <div class="card-tags"><span class="tag">Bar &amp; Grill</span><span class="tag">Live Music</span><span class="tag">Family</span></div>
+          </div>
+        </div>
+
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--coral)"></div>
+          <div class="card-body">
+            <div class="card-cat">Boardwalk Icon</div>
+            <div class="card-name">Hook's Hot Dogs</div>
+            <div class="card-tagline">Bright Leaf red dogs · Open till 2am weekends · 4 Harper Ave</div>
+            <p class="card-desc">Home of the brilliantly red Bright Leaf Hot Dog — the original NC Southern tradition since 1941. A walkup window on the boardwalk serving expertly seasoned dogs with creative toppings. Family-owned, locally beloved, and open until 2am on Friday and Saturday nights. You don't come to CB without stopping here.</p>
+            <div class="card-tags"><span class="tag">Boardwalk</span><span class="tag">Late Night</span><span class="tag">NC Tradition</span></div>
+          </div>
+        </div>
+
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--teal)"></div>
+          <div class="card-body">
+            <div class="card-cat">Pizza</div>
+            <div class="card-name">Michelangelo's Pizza &amp; Subs</div>
+            <div class="card-tagline">9 S Lake Park Blvd · Second floor · Dine in or porch</div>
+            <p class="card-desc">A CB classic a short walk from the boardwalk. Dine inside or grab a table under the umbrellas on their covered front porch. Fresh dough made every morning, house-grated cheese, scratch sauce. The Godfather-sized pizza is a group meal in itself. Pasta, subs, and stromboli round out a solid Italian menu.</p>
+            <div class="card-tags"><span class="tag">Pizza</span><span class="tag">Fresh Dough Daily</span><span class="tag">Porch Dining</span></div>
+          </div>
+        </div>
+
+        <div class="place-card">
+          <div class="card-accent" style="background:#FFD966"></div>
+          <div class="card-body">
+            <div class="card-cat">Pizza</div>
+            <div class="card-name">Benny Pazarelli's</div>
+            <div class="card-tagline">11 Boardwalk · Jumbo slices · Late night energy</div>
+            <p class="card-desc">Massive 28-inch pies and jumbo by-the-slice on the Carolina Beach Boardwalk. The legendary Virginia-born pizza brand brought their giant slices and late-night energy straight to the beach. No shoes necessary. The kind of pizza that hits different after a long day in the sun.</p>
+            <div class="card-tags"><span class="tag">Boardwalk</span><span class="tag">Jumbo Slices</span><span class="tag">Late Night</span></div>
           </div>
         </div>
 
       </div>
     </div>
 
-    <!-- BARS -->
+    <!-- ══ BARS ══ -->
     <div class="tab-panel" id="panel-bars">
       <div class="card-grid">
 
-        <div class="place-card">
+        <div class="place-card zachs-choice">
+          <span class="zachs-badge">⭐ Zach's Choice</span>
           <div class="card-accent" style="background:var(--coral)"></div>
           <div class="card-body">
             <div class="card-cat">Oceanfront Bar &amp; Grill</div>
             <div class="card-name">Hurricane Alley</div>
-            <div class="card-tagline">Beach views · Live music · Great tacos</div>
+            <div class="card-tagline">Beach views · Live music · Rooftop deck</div>
             <p class="card-desc">Stunning oceanfront views, cold drinks, and a staff that genuinely cares about their customers. The Jamaican-style tacos are a standout. Live music every weekend on the rooftop deck. One of the best spots on the island to sit with a drink and watch the ocean.</p>
             <div class="card-tags"><span class="tag">Oceanfront</span><span class="tag">Live Music</span><span class="tag">Rooftop</span></div>
           </div>
         </div>
 
-        <div class="place-card">
+        <div class="place-card zachs-choice">
+          <span class="zachs-badge">⭐ Zach's Choice</span>
           <div class="card-accent" style="background:var(--teal)"></div>
           <div class="card-body">
             <div class="card-cat">Boardwalk Bar</div>
@@ -411,7 +545,8 @@
           </div>
         </div>
 
-        <div class="place-card">
+        <div class="place-card zachs-choice">
+          <span class="zachs-badge">⭐ Zach's Choice</span>
           <div class="card-accent" style="background:var(--coral)"></div>
           <div class="card-body">
             <div class="card-cat">Boardwalk Bar</div>
@@ -422,25 +557,38 @@
           </div>
         </div>
 
-        <div class="place-card">
+        <div class="place-card zachs-choice">
+          <span class="zachs-badge">⭐ Zach's Choice</span>
           <div class="card-accent" style="background:var(--teal)"></div>
           <div class="card-body">
             <div class="card-cat">Rooftop Bar</div>
             <div class="card-name">The Tropical CB</div>
             <div class="card-tagline">3 stories · Rooftop tiki bar · Frozen drinks</div>
-            <p class="card-desc">Three stories of pure boardwalk fun right in the heart of CB. The rooftop tiki bar delivers full ocean and boardwalk views alongside frozen daiquiris, piña coladas, margaritas, and hurricanes from a fleet of frozen drink machines. First-floor roll-up window for grab-and-go beach drinks. Made for the island.</p>
+            <p class="card-desc">Three stories of pure boardwalk fun right in the heart of CB. The rooftop tiki bar delivers full ocean and boardwalk views alongside frozen daiquiris, piña coladas, margaritas, and hurricanes. First-floor roll-up window for grab-and-go beach drinks. Made for the island.</p>
             <div class="card-tags"><span class="tag">Rooftop</span><span class="tag">Frozen Drinks</span><span class="tag">Boardwalk</span></div>
+          </div>
+        </div>
+
+        <div class="place-card">
+          <div class="card-accent" style="background:#FFD966"></div>
+          <div class="card-body">
+            <div class="card-cat">Sports Bar</div>
+            <div class="card-name">Sand Dollar Sports Bar</div>
+            <div class="card-tagline">5 Cape Fear Blvd · Boardwalk · Nollie's Express inside</div>
+            <p class="card-desc">One of CB's newest boardwalk favorites, right next door to the Silver Dollar. Full ABC permits, great bar atmosphere, and — bonus — they serve Nollie's Taco Joint Express inside. Smashed burgers, mahi tacos, burritos, and nachos alongside your cold drinks.</p>
+            <div class="card-tags"><span class="tag">Sports Bar</span><span class="tag">Boardwalk</span><span class="tag">Nollie's Express</span></div>
           </div>
         </div>
 
       </div>
     </div>
 
-    <!-- ENTERTAINMENT -->
+    <!-- ══ ENTERTAINMENT ══ -->
     <div class="tab-panel" id="panel-entertainment">
       <div class="card-grid">
 
-        <div class="place-card">
+        <div class="place-card zachs-choice">
+          <span class="zachs-badge">⭐ Zach's Choice</span>
           <div class="card-accent" style="background:var(--coral)"></div>
           <div class="card-body">
             <div class="card-cat">Arcade</div>
@@ -465,18 +613,19 @@
       </div>
     </div>
 
-    <!-- SHOPS -->
+    <!-- ══ SHOPS ══ -->
     <div class="tab-panel" id="panel-shop">
       <div style="padding:3rem 0; color:var(--muted); font-size:0.95rem; line-height:1.75;">
         Local shops coming soon. Know a great one? <a href="#contact" style="color:var(--teal)">Tell us about it.</a>
       </div>
     </div>
 
-    <!-- STAY -->
+    <!-- ══ STAY ══ -->
     <div class="tab-panel" id="panel-stay">
       <div class="card-grid">
 
-        <div class="place-card">
+        <div class="place-card zachs-choice">
+          <span class="zachs-badge">⭐ Zach's Choice</span>
           <div class="card-accent" style="background:var(--teal)"></div>
           <div class="card-body">
             <div class="card-cat">Motel</div>
@@ -490,7 +639,7 @@
       </div>
     </div>
 
-    <!-- THINGS TO DO -->
+    <!-- ══ THINGS TO DO ══ -->
     <div class="tab-panel" id="panel-do">
       <div class="card-grid">
 
@@ -541,7 +690,7 @@
       </div>
     </div>
 
-    <!-- TIPS -->
+    <!-- ══ LOCAL TIPS ══ -->
     <div class="tab-panel" id="panel-tips">
       <div class="card-grid">
 
@@ -600,9 +749,7 @@
     <p class="section-eyebrow">Live Music &amp; Events</p>
     <h2 class="section-title">What's Happening on the Island</h2>
     <p class="section-lead">Real confirmed events only. Submit your event using the contact form below and we'll add it.</p>
-    <div class="events-grid" id="events-grid">
-      <!-- loaded from events.json -->
-    </div>
+    <div class="events-grid" id="events-grid"></div>
     <div class="events-note">
       📅 <strong>Know about an event?</strong> Use the contact form below and we'll add it to the calendar.
     </div>
@@ -746,7 +893,7 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
-  <div class="footer-copy">© 2025 ilovecbnc.com · Made with ♥ by a family that never wants to leave · Not affiliated with any government entity.</div>
+  <div class="footer-copy">© 2026 ilovecbnc.com · Made with ♥ by a family that never wants to leave · Not affiliated with any government entity.</div>
 </footer>
 
 <script>
@@ -767,6 +914,7 @@
     'court','trial','lawsuit','charged','suspect','killed',
     'accident','crash','death','died','hurricane','storm damage',
     'piracy','torrent','download','episode','season','series',
+    'fox news','new york post','breitbart','daily mail',
   ];
 
   function blocked(a) {
