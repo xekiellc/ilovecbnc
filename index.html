@@ -31,554 +31,164 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--navy); color: var(--white); overflow-x: hidden; }
 
-    body {
-      font-family: var(--font-body);
-      background: var(--navy);
-      color: var(--white);
-      overflow-x: hidden;
-    }
-
-    /* ━━━ NAV ━━━ */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      height: 60px;
-      background: rgba(7,26,46,0.96);
+      height: 60px; background: rgba(7,26,46,0.96);
       border-bottom: 2px solid var(--teal-dim);
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2rem;
-      backdrop-filter: blur(10px);
+      padding: 0 2rem; backdrop-filter: blur(10px);
     }
-
-    .nav-logo {
-      font-family: var(--font-head);
-      font-size: 1.2rem; font-weight: 800;
-      color: var(--teal); text-decoration: none;
-      display: flex; align-items: center; gap: 4px;
-    }
+    .nav-logo { font-family: var(--font-head); font-size: 1.2rem; font-weight: 800; color: var(--teal); text-decoration: none; display: flex; align-items: center; gap: 4px; }
     .nav-logo .heart { color: var(--coral); }
-
     .nav-links { display: flex; gap: 1.6rem; list-style: none; }
-    .nav-links a {
-      color: var(--muted); text-decoration: none;
-      font-size: 0.7rem; font-weight: 800;
-      letter-spacing: 2px; text-transform: uppercase;
-      transition: color 0.2s;
-    }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover { color: var(--teal); }
-
     @media (max-width: 700px) { .nav-links { display: none; } }
 
-    /* ━━━ HERO ━━━ */
     .hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center;
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
       padding: 80px 1.5rem 60px;
       background: linear-gradient(160deg, #071A2E 0%, #0C2A44 50%, #071A2E 100%);
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 600px; height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,229,200,0.06) 0%, transparent 70%);
-      top: -100px; right: -100px;
-      pointer-events: none;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      width: 400px; height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,87,87,0.05) 0%, transparent 70%);
-      bottom: -50px; left: -50px;
-      pointer-events: none;
-    }
-
+    .hero::before { content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(0,229,200,0.06) 0%, transparent 70%); top: -100px; right: -100px; pointer-events: none; }
+    .hero::after  { content: ''; position: absolute; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(255,87,87,0.05) 0%, transparent 70%); bottom: -50px; left: -50px; pointer-events: none; }
     .hero-content { position: relative; z-index: 2; }
 
-    .hero-eyebrow {
-      display: inline-block;
-      border: 1.5px solid var(--teal);
-      color: var(--teal);
-      font-size: 0.68rem; font-weight: 800;
-      letter-spacing: 4px; text-transform: uppercase;
-      padding: 5px 18px; border-radius: 30px;
-      margin-bottom: 1.4rem;
-      opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards;
-    }
-
-    .hero-logo {
-      display: flex; align-items: center; justify-content: center;
-      gap: 0.12em;
-      font-family: var(--font-head);
-      font-size: clamp(4.5rem, 14vw, 9rem);
-      font-weight: 800; line-height: 1;
-      color: var(--white);
-      opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards;
-    }
-
-    .hero-heart {
-      width: 0.82em; height: 0.82em; flex-shrink: 0;
-      animation: heartbeat 2.4s ease-in-out 1.2s infinite;
-      filter: drop-shadow(0 3px 12px rgba(255,87,87,0.5));
-    }
-
-    @keyframes heartbeat {
-      0%,100% { transform: scale(1); }
-      14%      { transform: scale(1.18); }
-      28%      { transform: scale(1); }
-      42%      { transform: scale(1.1); }
-      56%      { transform: scale(1); }
-    }
-
-    .hero-sub {
-      font-size: clamp(0.7rem, 1.8vw, 0.85rem);
-      font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
-      color: var(--muted); margin-top: 0.9rem;
-      opacity: 0; animation: fadeUp 0.7s ease 0.5s forwards;
-    }
-
-    .hero-big4 {
-      margin-top: 1.6rem;
-      opacity: 0; animation: fadeUp 0.7s ease 0.65s forwards;
-    }
-
-    .hero-big4-row {
-      font-family: var(--font-head);
-      font-size: clamp(1rem, 2.8vw, 1.35rem);
-      font-weight: 700; color: var(--teal);
-      letter-spacing: 0.5px; padding: 0.2rem 0;
-    }
-
+    .hero-eyebrow { display: inline-block; border: 1.5px solid var(--teal); color: var(--teal); font-size: 0.68rem; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; padding: 5px 18px; border-radius: 30px; margin-bottom: 1.4rem; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+    .hero-logo { display: flex; align-items: center; justify-content: center; gap: 0.12em; font-family: var(--font-head); font-size: clamp(4.5rem, 14vw, 9rem); font-weight: 800; line-height: 1; color: var(--white); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+    .hero-heart { width: 0.82em; height: 0.82em; flex-shrink: 0; animation: heartbeat 2.4s ease-in-out 1.2s infinite; filter: drop-shadow(0 3px 12px rgba(255,87,87,0.5)); }
+    @keyframes heartbeat { 0%,100% { transform: scale(1); } 14% { transform: scale(1.18); } 28% { transform: scale(1); } 42% { transform: scale(1.1); } 56% { transform: scale(1); } }
+    .hero-sub { font-size: clamp(0.7rem, 1.8vw, 0.85rem); font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--muted); margin-top: 0.9rem; opacity: 0; animation: fadeUp 0.7s ease 0.5s forwards; }
+    .hero-big4 { margin-top: 1.6rem; opacity: 0; animation: fadeUp 0.7s ease 0.65s forwards; }
+    .hero-big4-row { font-family: var(--font-head); font-size: clamp(1rem, 2.8vw, 1.35rem); font-weight: 700; color: var(--teal); letter-spacing: 0.5px; padding: 0.2rem 0; }
     .hero-big4-sep { color: var(--coral); margin: 0 0.55rem; opacity: 0.9; }
+    .hero-btns { margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.7s ease 0.8s forwards; }
 
-    .hero-btns {
-      margin-top: 2rem;
-      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
-      opacity: 0; animation: fadeUp 0.7s ease 0.8s forwards;
-    }
-
-    .btn-primary {
-      background: var(--coral); color: white;
-      font-family: var(--font-body);
-      font-size: 0.78rem; font-weight: 800;
-      letter-spacing: 2px; text-transform: uppercase;
-      padding: 0.85rem 2rem; border-radius: 30px;
-      border: none; cursor: pointer; text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-      box-shadow: 0 4px 20px rgba(255,87,87,0.35);
-    }
+    .btn-primary { background: var(--coral); color: white; font-family: var(--font-body); font-size: 0.78rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 0.85rem 2rem; border-radius: 30px; border: none; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; box-shadow: 0 4px 20px rgba(255,87,87,0.35); }
     .btn-primary:hover { background: var(--coral-dim); transform: translateY(-2px); }
-
-    .btn-outline {
-      background: transparent; color: var(--teal);
-      font-family: var(--font-body);
-      font-size: 0.78rem; font-weight: 800;
-      letter-spacing: 2px; text-transform: uppercase;
-      padding: 0.85rem 2rem; border-radius: 30px;
-      border: 2px solid var(--teal); cursor: pointer; text-decoration: none;
-      transition: background 0.2s, color 0.2s, transform 0.15s;
-    }
+    .btn-outline { background: transparent; color: var(--teal); font-family: var(--font-body); font-size: 0.78rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 0.85rem 2rem; border-radius: 30px; border: 2px solid var(--teal); cursor: pointer; text-decoration: none; transition: background 0.2s, color 0.2s, transform 0.15s; }
     .btn-outline:hover { background: var(--teal); color: var(--navy); transform: translateY(-2px); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ━━━ TICKER ━━━ */
-    .ticker {
-      background: var(--teal-dim);
-      padding: 0.65rem 0; overflow: hidden; white-space: nowrap;
-    }
+    .ticker { background: var(--teal-dim); padding: 0.65rem 0; overflow: hidden; white-space: nowrap; }
     .ticker-inner { display: inline-block; animation: tickerMove 30s linear infinite; }
-    .ticker-inner span {
-      font-size: 0.68rem; font-weight: 800;
-      letter-spacing: 3px; text-transform: uppercase;
-      color: var(--navy); padding: 0 1.6rem;
-    }
+    .ticker-inner span { font-size: 0.68rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--navy); padding: 0 1.6rem; }
     .ticker-inner span::before { content: '★'; margin-right: 0.6rem; color: var(--coral); }
     @keyframes tickerMove { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ━━━ SHARED SECTION STYLES ━━━ */
     section { padding: 5rem 1.5rem; }
     .container { max-width: 1100px; margin: 0 auto; }
+    .section-eyebrow { font-size: 0.68rem; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: var(--teal); margin-bottom: 0.5rem; }
+    .section-title { font-family: var(--font-head); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 0.6rem; }
+    .section-lead { font-size: 1rem; color: var(--muted); max-width: 560px; line-height: 1.75; }
 
-    .section-eyebrow {
-      font-size: 0.68rem; font-weight: 800;
-      letter-spacing: 4px; text-transform: uppercase;
-      color: var(--teal); margin-bottom: 0.5rem;
-    }
-
-    .section-title {
-      font-family: var(--font-head);
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 800; color: var(--white);
-      line-height: 1.1; margin-bottom: 0.6rem;
-    }
-
-    .section-lead {
-      font-size: 1rem; color: var(--muted);
-      max-width: 560px; line-height: 1.75;
-    }
-
-    /* ━━━ TABS ━━━ */
-    .tabs-bar {
-      display: flex; flex-wrap: wrap;
-      margin: 2.5rem 0 2rem;
-      border-bottom: 2px solid var(--border);
-    }
-
-    .tab-btn {
-      padding: 0.6rem 1.2rem;
-      font-family: var(--font-body);
-      font-size: 0.72rem; font-weight: 800;
-      letter-spacing: 2px; text-transform: uppercase;
-      cursor: pointer; border: none;
-      background: transparent; color: var(--muted);
-      border-bottom: 2px solid transparent; margin-bottom: -2px;
-      transition: color 0.2s, border-color 0.2s;
-    }
+    .tabs-bar { display: flex; flex-wrap: wrap; margin: 2.5rem 0 2rem; border-bottom: 2px solid var(--border); }
+    .tab-btn { padding: 0.6rem 1.2rem; font-family: var(--font-body); font-size: 0.72rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border: none; background: transparent; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -2px; transition: color 0.2s, border-color 0.2s; }
     .tab-btn.active { color: var(--teal); border-bottom-color: var(--coral); }
     .tab-btn:hover:not(.active) { color: var(--white); }
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
-    /* ━━━ PLACE CARDS ━━━ */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 1.2rem;
-    }
-
-    .place-card {
-      background: var(--navy-light);
-      border: 1px solid var(--border);
-      border-radius: 14px; overflow: hidden;
-      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-    }
-    .place-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--teal);
-      box-shadow: 0 8px 30px rgba(0,229,200,0.1);
-    }
-
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.2rem; }
+    .place-card { background: var(--navy-light); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; }
+    .place-card:hover { transform: translateY(-5px); border-color: var(--teal); box-shadow: 0 8px 30px rgba(0,229,200,0.1); }
     .card-accent { height: 4px; }
     .card-body { padding: 1.2rem 1.4rem 1.4rem; }
-
-    .card-cat {
-      font-size: 0.6rem; font-weight: 800;
-      letter-spacing: 2.5px; text-transform: uppercase;
-      color: var(--teal); margin-bottom: 0.5rem;
-    }
-
-    .card-name {
-      font-family: var(--font-head);
-      font-size: 1.15rem; font-weight: 800;
-      color: var(--white); line-height: 1.2; margin-bottom: 0.35rem;
-    }
-
-    .card-tagline {
-      font-size: 0.78rem; color: var(--muted);
-      margin-bottom: 0.8rem; font-style: italic;
-    }
-
-    .card-desc {
-      font-size: 0.88rem; color: rgba(255,255,255,0.7); line-height: 1.65;
-    }
-
+    .card-cat { font-size: 0.6rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: var(--teal); margin-bottom: 0.5rem; }
+    .card-name { font-family: var(--font-head); font-size: 1.15rem; font-weight: 800; color: var(--white); line-height: 1.2; margin-bottom: 0.35rem; }
+    .card-tagline { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.8rem; font-style: italic; }
+    .card-desc { font-size: 0.88rem; color: rgba(255,255,255,0.7); line-height: 1.65; }
     .card-tags { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag { font-size: 0.62rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 0.25rem 0.65rem; border-radius: 20px; background: rgba(0,229,200,0.1); color: var(--teal); border: 1px solid rgba(0,229,200,0.2); }
 
-    .tag {
-      font-size: 0.62rem; font-weight: 800;
-      letter-spacing: 1px; text-transform: uppercase;
-      padding: 0.25rem 0.65rem; border-radius: 20px;
-      background: rgba(0,229,200,0.1); color: var(--teal);
-      border: 1px solid rgba(0,229,200,0.2);
-    }
-
-    /* ━━━ EVENTS ━━━ */
     #events { background: var(--navy-mid); }
-
-    .events-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1rem; margin-top: 2rem;
-    }
-
-    .event-card {
-      background: var(--navy-light);
-      border: 1px solid var(--border); border-radius: 12px;
-      padding: 1.2rem;
-      display: flex; gap: 1rem; align-items: flex-start;
-      transition: border-color 0.2s, transform 0.2s;
-    }
+    .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-top: 2rem; }
+    .event-card { background: var(--navy-light); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; display: flex; gap: 1rem; align-items: flex-start; transition: border-color 0.2s, transform 0.2s; }
     .event-card:hover { border-color: var(--coral); transform: translateY(-3px); }
-
-    .event-date {
-      background: var(--coral); border-radius: 8px;
-      width: 48px; height: 48px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; flex-shrink: 0;
-    }
-    .event-date .mo {
-      font-size: 0.55rem; font-weight: 800;
-      text-transform: uppercase; letter-spacing: 1px;
-      color: rgba(255,255,255,0.85); line-height: 1;
-    }
-    .event-date .d {
-      font-family: var(--font-head);
-      font-size: 1.3rem; font-weight: 800; color: white; line-height: 1;
-    }
-
+    .event-date { background: var(--coral); border-radius: 8px; width: 48px; height: 48px; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; }
+    .event-date .mo { font-size: 0.55rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.85); line-height: 1; }
+    .event-date .d { font-family: var(--font-head); font-size: 1.3rem; font-weight: 800; color: white; line-height: 1; }
     .event-info { flex: 1; min-width: 0; }
-    .event-name {
-      font-family: var(--font-head);
-      font-size: 0.95rem; font-weight: 800;
-      color: var(--white); margin-bottom: 0.3rem;
-    }
+    .event-name { font-family: var(--font-head); font-size: 0.95rem; font-weight: 800; color: var(--white); margin-bottom: 0.3rem; }
     .event-venue { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.5rem; }
-
-    .event-badge {
-      display: inline-block;
-      font-size: 0.6rem; font-weight: 800;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      padding: 0.2rem 0.6rem; border-radius: 10px;
-    }
+    .event-badge { display: inline-block; font-size: 0.6rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 10px; }
     .badge-music { background: rgba(0,229,200,0.12); color: var(--teal); border: 1px solid rgba(0,229,200,0.25); }
     .badge-fest  { background: rgba(255,87,87,0.15); color: #FF9999; border: 1px solid rgba(255,87,87,0.25); }
     .badge-comm  { background: rgba(255,200,50,0.1); color: #FFD966; border: 1px solid rgba(255,200,50,0.2); }
+    .events-note { margin-top: 1.5rem; font-size: 0.78rem; color: var(--muted); padding: 1rem 1.2rem; border: 1px solid var(--border); border-radius: 10px; line-height: 1.6; }
 
-    .events-note {
-      margin-top: 1.5rem; font-size: 0.78rem; color: var(--muted);
-      padding: 1rem 1.2rem;
-      border: 1px solid var(--border); border-radius: 10px; line-height: 1.6;
-    }
-
-    /* ━━━ COMMUNITY ━━━ */
     #community { background: var(--navy); }
-
-    .community-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.2rem; margin-top: 2rem;
-    }
-
-    .comm-card {
-      border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem;
-      transition: border-color 0.2s, background 0.2s;
-    }
+    .community-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
+    .comm-card { border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; transition: border-color 0.2s, background 0.2s; }
     .comm-card:hover { border-color: var(--teal); background: var(--navy-light); }
-
     .comm-icon { font-size: 1.6rem; margin-bottom: 0.8rem; }
-    .comm-title {
-      font-family: var(--font-head);
-      font-size: 1rem; font-weight: 800; color: var(--teal); margin-bottom: 0.5rem;
-    }
+    .comm-title { font-family: var(--font-head); font-size: 1rem; font-weight: 800; color: var(--teal); margin-bottom: 0.5rem; }
     .comm-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
 
-    /* ━━━ PHOTO STRIP ━━━ */
     .photo-strip { background: var(--navy-mid); padding: 3.5rem 1.5rem; }
     .photo-strip-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
-
-    .photo-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 0.8rem; margin-top: 1.5rem;
-    }
+    .photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; margin-top: 1.5rem; }
     @media (max-width: 600px) { .photo-grid { grid-template-columns: repeat(2, 1fr); } }
-
-    .photo-slot {
-      aspect-ratio: 1;
-      background: var(--navy-light);
-      border: 1px dashed rgba(0,229,200,0.2);
-      border-radius: 10px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 0.4rem;
-      transition: border-color 0.2s, background 0.2s; cursor: pointer;
-    }
+    .photo-slot { aspect-ratio: 1; background: var(--navy-light); border: 1px dashed rgba(0,229,200,0.2); border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; transition: border-color 0.2s, background 0.2s; cursor: pointer; }
     .photo-slot:hover { border-color: var(--teal); background: rgba(0,229,200,0.04); }
     .photo-slot-icon { font-size: 1.4rem; opacity: 0.3; }
-    .photo-slot-text {
-      font-size: 0.62rem; font-weight: 700;
-      letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted);
-    }
+    .photo-slot-text { font-size: 0.62rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
 
-    /* ━━━ NEWS ━━━ */
     #news { background: var(--navy-light); }
-
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.2rem; margin-top: 2rem;
-    }
-
-    .news-card {
-      background: var(--navy-mid);
-      border: 1px solid var(--border); border-radius: 12px; padding: 1.3rem;
-      transition: border-color 0.2s, transform 0.2s;
-    }
+    .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
+    .news-card { background: var(--navy-mid); border: 1px solid var(--border); border-radius: 12px; padding: 1.3rem; transition: border-color 0.2s, transform 0.2s; }
     .news-card:hover { border-color: var(--teal); transform: translateY(-3px); }
-
-    .news-source {
-      font-size: 0.6rem; font-weight: 800;
-      letter-spacing: 2.5px; text-transform: uppercase;
-      color: var(--teal); margin-bottom: 0.6rem;
-    }
-
-    .news-title {
-      font-family: var(--font-head);
-      font-size: 0.95rem; font-weight: 700;
-      color: var(--white); line-height: 1.35; margin-bottom: 0.7rem;
-    }
+    .news-source { font-size: 0.6rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: var(--teal); margin-bottom: 0.6rem; }
+    .news-title { font-family: var(--font-head); font-size: 0.95rem; font-weight: 700; color: var(--white); line-height: 1.35; margin-bottom: 0.7rem; }
     .news-title a { color: inherit; text-decoration: none; }
     .news-title a:hover { color: var(--teal); }
     .news-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.7rem; }
-    .news-date {
-      font-size: 0.65rem; font-weight: 700;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      color: rgba(255,255,255,0.22);
-    }
+    .news-date { font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.22); }
 
-    /* ━━━ ABOUT ━━━ */
     #about { background: var(--coral); }
     #about .section-eyebrow { color: rgba(255,255,255,0.7); }
     #about .section-title { color: white; }
-
-    .about-inner {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; align-items: center;
-    }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
     @media (max-width: 700px) { .about-inner { grid-template-columns: 1fr; gap: 2rem; } }
-
-    .about-body {
-      font-size: 1rem; color: rgba(255,255,255,0.88);
-      line-height: 1.85; margin-top: 1rem;
-    }
-
+    .about-body { font-size: 1rem; color: rgba(255,255,255,0.88); line-height: 1.85; margin-top: 1rem; }
     .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .stat { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 1.3rem; text-align: center; }
+    .stat-num { font-family: var(--font-head); font-size: 2rem; font-weight: 800; color: white; display: block; }
+    .stat-lbl { font-size: 0.62rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-top: 0.3rem; }
 
-    .stat {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 12px; padding: 1.3rem; text-align: center;
-    }
-    .stat-num {
-      font-family: var(--font-head);
-      font-size: 2rem; font-weight: 800; color: white; display: block;
-    }
-    .stat-lbl {
-      font-size: 0.62rem; font-weight: 800;
-      letter-spacing: 2.5px; text-transform: uppercase;
-      color: rgba(255,255,255,0.65); margin-top: 0.3rem;
-    }
-
-    /* ━━━ CONTACT ━━━ */
     #contact { background: var(--navy); }
-
-    .contact-inner {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; align-items: start;
-    }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
     @media (max-width: 700px) { .contact-inner { grid-template-columns: 1fr; gap: 2rem; } }
-
-    .contact-body {
-      font-size: 0.95rem; color: var(--muted);
-      line-height: 1.75; margin-top: 1rem;
-    }
-
+    .contact-body { font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin-top: 1rem; }
     .contact-ways { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.9rem; }
-    .contact-way {
-      display: flex; align-items: center; gap: 0.75rem;
-      font-size: 0.85rem; font-weight: 700; color: var(--white);
-    }
-    .way-icon {
-      width: 36px; height: 36px; border-radius: 8px;
-      background: var(--teal); color: var(--navy);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; flex-shrink: 0;
-    }
-
+    .contact-way { display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; font-weight: 700; color: var(--white); }
+    .way-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--teal); color: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
     .form-group { margin-bottom: 1rem; }
-
-    input[type="text"],
-    input[type="email"],
-    textarea {
-      width: 100%; padding: 0.85rem 1rem;
-      background: var(--navy-light);
-      border: 1px solid var(--border); border-radius: 10px;
-      color: var(--white); font-family: var(--font-body);
-      font-size: 0.9rem; outline: none;
-      transition: border-color 0.2s;
-    }
+    input[type="text"], input[type="email"], textarea { width: 100%; padding: 0.85rem 1rem; background: var(--navy-light); border: 1px solid var(--border); border-radius: 10px; color: var(--white); font-family: var(--font-body); font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
     input:focus, textarea:focus { border-color: var(--teal); }
     textarea { resize: vertical; min-height: 130px; }
     input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.25); }
-
-    .btn-submit {
-      width: 100%; padding: 0.95rem;
-      background: var(--teal); color: var(--navy);
-      font-family: var(--font-body);
-      font-size: 0.8rem; font-weight: 800;
-      letter-spacing: 2px; text-transform: uppercase;
-      border: none; border-radius: 10px; cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
-    }
+    .btn-submit { width: 100%; padding: 0.95rem; background: var(--teal); color: var(--navy); font-family: var(--font-body); font-size: 0.8rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; border: none; border-radius: 10px; cursor: pointer; transition: background 0.2s, transform 0.15s; }
     .btn-submit:hover { background: var(--white); transform: translateY(-2px); }
+    .form-success { display: none; text-align: center; padding: 2rem; font-family: var(--font-head); font-size: 1.1rem; color: var(--teal); border: 1px solid var(--border); border-radius: 12px; }
 
-    .form-success {
-      display: none; text-align: center; padding: 2rem;
-      font-family: var(--font-head); font-size: 1.1rem;
-      color: var(--teal); border: 1px solid var(--border); border-radius: 12px;
-    }
-
-    /* ━━━ FOOTER ━━━ */
-    footer {
-      background: var(--navy-mid);
-      border-top: 2px solid var(--border);
-      padding: 3rem 1.5rem 2rem;
-    }
-
-    .footer-inner {
-      max-width: 1100px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: flex-end;
-      flex-wrap: wrap; gap: 1.5rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .footer-logo {
-      font-family: var(--font-head);
-      font-size: 1.8rem; font-weight: 800; color: var(--teal);
-      display: flex; align-items: center; gap: 6px;
-    }
+    footer { background: var(--navy-mid); border-top: 2px solid var(--border); padding: 3rem 1.5rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+    .footer-logo { font-family: var(--font-head); font-size: 1.8rem; font-weight: 800; color: var(--teal); display: flex; align-items: center; gap: 6px; }
     .footer-logo .heart { color: var(--coral); }
     .footer-tagline { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; }
-
     .footer-nav { display: flex; gap: 1.5rem; flex-wrap: wrap; list-style: none; }
-    .footer-nav a {
-      color: var(--muted); text-decoration: none;
-      font-size: 0.7rem; font-weight: 800;
-      letter-spacing: 2px; text-transform: uppercase;
-      transition: color 0.2s;
-    }
+    .footer-nav a { color: var(--muted); text-decoration: none; font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
     .footer-nav a:hover { color: var(--teal); }
-
-    .footer-copy {
-      max-width: 1100px; margin: 1.5rem auto 0;
-      font-size: 0.7rem; color: rgba(255,255,255,0.2); letter-spacing: 0.5px;
-    }
+    .footer-copy { max-width: 1100px; margin: 1.5rem auto 0; font-size: 0.7rem; color: rgba(255,255,255,0.2); letter-spacing: 0.5px; }
   </style>
 </head>
 <body>
 
-<!-- ━━━ NAV ━━━ -->
 <nav>
   <a href="#" class="nav-logo">I <span class="heart">♥</span> CBNC</a>
   <ul class="nav-links">
@@ -591,7 +201,6 @@
   </ul>
 </nav>
 
-<!-- ━━━ HERO ━━━ -->
 <section class="hero">
   <div class="hero-content">
     <div class="hero-eyebrow">Carolina Beach, North Carolina</div>
@@ -614,7 +223,6 @@
   </div>
 </section>
 
-<!-- ━━━ TICKER ━━━ -->
 <div class="ticker">
   <div class="ticker-inner">
     <span>Carolina Beach</span><span>The Boardwalk</span><span>Freeman Park</span><span>Fort Fisher</span><span>Live Music</span><span>Community</span><span>Sea Turtles</span><span>Dolphins</span><span>Ghost Crabs</span><span>Summer Nights</span>
@@ -622,7 +230,6 @@
   </div>
 </div>
 
-<!-- ━━━ GUIDE ━━━ -->
 <section id="guide">
   <div class="container">
     <p class="section-eyebrow">Visitor Guide</p>
@@ -632,6 +239,7 @@
     <div class="tabs-bar">
       <button class="tab-btn active" onclick="switchTab(this,'eat')">🍽 Eat</button>
       <button class="tab-btn" onclick="switchTab(this,'bars')">🍺 Bars</button>
+      <button class="tab-btn" onclick="switchTab(this,'entertainment')">🎯 Entertainment</button>
       <button class="tab-btn" onclick="switchTab(this,'shop')">🛍 Shops</button>
       <button class="tab-btn" onclick="switchTab(this,'stay')">🏖 Stay</button>
       <button class="tab-btn" onclick="switchTab(this,'do')">🌊 Things To Do</button>
@@ -648,7 +256,7 @@
             <div class="card-cat">Tacos</div>
             <div class="card-name">Nollie's Taco Joint</div>
             <div class="card-tagline">So-Cal vibes · Skater soul · Fresh daily</div>
-            <p class="card-desc">Owned by a retired professional skateboarder, Nollie's brings So-Cal taco culture to CB. Menu items named after skate tricks, tortillas gently grilled, ingredients prepped fresh daily. The pulled pork nachos and mahi tacos are legendary. Outdoor patio, relaxed vibe, 98% approval rating. One of the best things on the island.</p>
+            <p class="card-desc">Owned by a retired professional skateboarder, Nollie's brings So-Cal taco culture to CB. Menu items named after skate tricks, tortillas gently grilled, ingredients prepped fresh daily. The pulled pork nachos and mahi tacos are legendary. Outdoor patio, relaxed vibe, 98% approval rating.</p>
             <div class="card-tags"><span class="tag">Tacos</span><span class="tag">Outdoor Patio</span><span class="tag">Local Favorite</span></div>
           </div>
         </div>
@@ -670,7 +278,7 @@
             <div class="card-cat">Bar &amp; Grill</div>
             <div class="card-name">The Dive Food &amp; Spirits</div>
             <div class="card-tagline">Since 2008 · Late night · Family owned</div>
-            <p class="card-desc">Built from scratch in 2008 by Carolina Beach residents, The Dive is a CB original. Voted best wings in Eastern NC — just $1 on Saturdays and Sundays. Great burgers, fish tacos, Greek pitas, and a kitchen open late every night. Music bingo, trivia, karaoke, and DJ on weekends. The real deal.</p>
+            <p class="card-desc">Built from scratch in 2008 by Carolina Beach residents, The Dive is a CB original. Voted best wings in Eastern NC — just $1 on Saturdays and Sundays. Great burgers, fish tacos, Greek pitas, and a kitchen open late every night. Music bingo, trivia, karaoke, and DJ on weekends.</p>
             <div class="card-tags"><span class="tag">Wings</span><span class="tag">Late Night</span><span class="tag">Local</span></div>
           </div>
         </div>
@@ -692,7 +300,7 @@
             <div class="card-cat">Tiki Bar &amp; Restaurant</div>
             <div class="card-name">SeaWitch Cafe &amp; Tiki Bar</div>
             <div class="card-tagline">Since 1995 · Live music · Hidden paradise</div>
-            <p class="card-desc">A Carolina Beach landmark since 1995. A 175-seat restaurant and tiki bar built around lush palm trees, steps from the boardwalk. Family-friendly by day, CB's most popular nightlife venue by night with full production band performances. The steam pot — crab clusters, oysters, shrimp, potatoes and corn — is not to be missed.</p>
+            <p class="card-desc">A Carolina Beach landmark since 1995. A 175-seat restaurant and tiki bar built around lush palm trees, steps from the boardwalk. Family-friendly by day, CB's most popular nightlife venue by night. The steam pot — crab clusters, oysters, shrimp, potatoes and corn — is not to be missed.</p>
             <div class="card-tags"><span class="tag">Tiki Bar</span><span class="tag">Live Music</span><span class="tag">Dog Friendly</span></div>
           </div>
         </div>
@@ -703,7 +311,7 @@
             <div class="card-cat">Waterfront Dining</div>
             <div class="card-name">Stoked Restaurant</div>
             <div class="card-tagline">Canal Drive · Dockside · Surf &amp; turf</div>
-            <p class="card-desc">The only restaurant on the island where you can arrive by boat and dock out back. Surf and turf, pasta, fresh seafood, and a menu built for everyone. Weekend brunch, live music, and a free golf cart pickup for guests. Waterside views, great atmosphere, one of CB's most complete dining experiences.</p>
+            <p class="card-desc">The only restaurant on the island where you can arrive by boat and dock out back. Surf and turf, pasta, fresh seafood, and a menu built for everyone. Weekend brunch, live music, and a free golf cart pickup for guests. Waterside views and one of CB's most complete dining experiences.</p>
             <div class="card-tags"><span class="tag">Waterfront</span><span class="tag">Dockside</span><span class="tag">Brunch</span></div>
           </div>
         </div>
@@ -725,7 +333,7 @@
             <div class="card-cat">Pizza</div>
             <div class="card-name">Fentoni's Pizzeria</div>
             <div class="card-tagline">Real pizza · Slices · Stromboli · Calzone</div>
-            <p class="card-desc">Genuine NYC-style pizza with a crispy crust, great sauce, and proper toppings. Slices, pies, stromboli, calzones — the works. Consistently called the best pizza in Carolina Beach. Dine in, take out, or delivery. The kind of pizza place every beach town needs and CB is lucky to have.</p>
+            <p class="card-desc">Genuine NYC-style pizza with a crispy crust, great sauce, and proper toppings. Slices, pies, stromboli, calzones — the works. Consistently called the best pizza in Carolina Beach. Dine in, take out, or delivery. The kind of pizza place every beach town needs.</p>
             <div class="card-tags"><span class="tag">Pizza</span><span class="tag">NYC Style</span><span class="tag">Delivery</span></div>
           </div>
         </div>
@@ -736,8 +344,30 @@
             <div class="card-cat">Ice Cream</div>
             <div class="card-name">Squigley's Ice Cream &amp; Treats</div>
             <div class="card-tagline">Since 1994 · 4,050+ flavors · Get Squiggled</div>
-            <p class="card-desc">Southeastern NC's most famous ice cream parlor, open since 1994 in a historic pink and white building. The signature Squigley — real vanilla ice cream with your choice of mix-ins squiggled in on the spot — comes in over 4,050 combinations. Cash only. Worth the line. You'll leave with a sticker that says "you've been Squiggled."</p>
+            <p class="card-desc">Southeastern NC's most famous ice cream parlor, open since 1994 in a historic pink and white building. The signature Squigley — real vanilla ice cream with your choice of mix-ins — comes in over 4,050 combinations. Cash only. Worth the line. You'll leave with a sticker that says "you've been Squiggled."</p>
             <div class="card-tags"><span class="tag">Ice Cream</span><span class="tag">Since 1994</span><span class="tag">Cash Only</span></div>
+          </div>
+        </div>
+
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--teal)"></div>
+          <div class="card-body">
+            <div class="card-cat">Irish Pub</div>
+            <div class="card-name">HopLite Pub &amp; Restaurant</div>
+            <div class="card-tagline">Since 2010 · Irish favorites · Locals' choice</div>
+            <p class="card-desc">A genuine neighborhood Irish pub serving excellent food at great prices. Bangers and mash, Reuben egg rolls, shepherd's pie, fish and chips, and the best onion rings around. Daily drink and food specials, music bingo on Wednesdays, and a newly renovated game room. No tourist trappings — just consistently great food and value.</p>
+            <div class="card-tags"><span class="tag">Irish Pub</span><span class="tag">Local</span><span class="tag">Dog Friendly Patio</span></div>
+          </div>
+        </div>
+
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--coral)"></div>
+          <div class="card-body">
+            <div class="card-cat">Oceanfront Dining</div>
+            <div class="card-name">Ocean Grill &amp; Tiki Bar</div>
+            <div class="card-tagline">Named one of America's Best Beach Bars · Pier dining · Panoramic views</div>
+            <p class="card-desc">Named one of "America's Best Beach Bars" by Thrillist. Perched directly on the oceanfront with a tiki bar standing on the remnants of the historic Center Pier. Panoramic views of the NC shoreline upstairs, breezy patio dining downstairs. Tiki shows from local and regional bands all summer long.</p>
+            <div class="card-tags"><span class="tag">Oceanfront</span><span class="tag">Tiki Bar</span><span class="tag">Live Music</span></div>
           </div>
         </div>
 
@@ -754,8 +384,8 @@
             <div class="card-cat">Oceanfront Bar &amp; Grill</div>
             <div class="card-name">Hurricane Alley</div>
             <div class="card-tagline">Beach views · Live music · Great tacos</div>
-            <p class="card-desc">Stunning oceanfront views, cold drinks, and a staff that genuinely cares about their customers. The Jamaican-style tacos are a standout. Live music and special events keep the energy high. One of the best spots on the island to sit with a drink and watch the ocean.</p>
-            <div class="card-tags"><span class="tag">Oceanfront</span><span class="tag">Live Music</span><span class="tag">Food &amp; Drinks</span></div>
+            <p class="card-desc">Stunning oceanfront views, cold drinks, and a staff that genuinely cares about their customers. The Jamaican-style tacos are a standout. Live music every weekend on the rooftop deck. One of the best spots on the island to sit with a drink and watch the ocean.</p>
+            <div class="card-tags"><span class="tag">Oceanfront</span><span class="tag">Live Music</span><span class="tag">Rooftop</span></div>
           </div>
         </div>
 
@@ -776,8 +406,59 @@
             <div class="card-cat">Dive Bar</div>
             <div class="card-name">The Fat Pelican</div>
             <div class="card-tagline">Voted #1 Dive Bar in NC · Walk-in beer cooler · 400+ beers</div>
-            <p class="card-desc">Voted the #1 dive bar in North Carolina and top 25 in the nation. Walk into a giant cooler and pick your own beer from over 400 options. Dirt floor outdoor space, eclectic salvaged decor, old school arcade games, and a vibe that can't be manufactured. Completely one of a kind. There is no other bar like this anywhere.</p>
+            <p class="card-desc">Voted #1 dive bar in North Carolina and top 25 in the nation. Walk into a giant cooler and pick your own beer from over 400 options. Dirt floor outdoor space, eclectic salvaged decor, old school arcade games, and a vibe that simply cannot be manufactured.</p>
             <div class="card-tags"><span class="tag">Dive Bar</span><span class="tag">400+ Beers</span><span class="tag">Walk-In Cooler</span></div>
+          </div>
+        </div>
+
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--coral)"></div>
+          <div class="card-body">
+            <div class="card-cat">Boardwalk Bar</div>
+            <div class="card-name">Silver Dollar</div>
+            <div class="card-tagline">Since 1957 · Karaoke nights · Late night boardwalk</div>
+            <p class="card-desc">A Carolina Beach boardwalk institution since 1957. A two-level locally owned bar and eatery serving crispy pub fare and seafood favorites steps from the beach. Known for karaoke nights and keeping the after-hours boardwalk crowd going. One of the longest-running spots on the island.</p>
+            <div class="card-tags"><span class="tag">Since 1957</span><span class="tag">Karaoke</span><span class="tag">Boardwalk</span></div>
+          </div>
+        </div>
+
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--teal)"></div>
+          <div class="card-body">
+            <div class="card-cat">Rooftop Bar</div>
+            <div class="card-name">The Tropical CB</div>
+            <div class="card-tagline">3 stories · Rooftop tiki bar · Frozen drinks</div>
+            <p class="card-desc">Three stories of pure boardwalk fun right in the heart of CB. The rooftop tiki bar delivers full ocean and boardwalk views alongside frozen daiquiris, piña coladas, margaritas, and hurricanes from a fleet of frozen drink machines. First-floor roll-up window for grab-and-go beach drinks. Made for the island.</p>
+            <div class="card-tags"><span class="tag">Rooftop</span><span class="tag">Frozen Drinks</span><span class="tag">Boardwalk</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ENTERTAINMENT -->
+    <div class="tab-panel" id="panel-entertainment">
+      <div class="card-grid">
+
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--coral)"></div>
+          <div class="card-body">
+            <div class="card-cat">Arcade</div>
+            <div class="card-name">Carolina Beach Arcade</div>
+            <div class="card-tagline">Boardwalk · Classic games · All ages</div>
+            <p class="card-desc">A boardwalk arcade the way boardwalk arcades are supposed to be. Classic games, prize redemption, and the kind of place that pulls kids of all ages off the beach and into a dimension of pure summer fun. An essential stop on any CB boardwalk walk.</p>
+            <div class="card-tags"><span class="tag">Arcade</span><span class="tag">Boardwalk</span><span class="tag">Family</span></div>
+          </div>
+        </div>
+
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--teal)"></div>
+          <div class="card-body">
+            <div class="card-cat">Mini Golf</div>
+            <div class="card-name">More Coming Soon</div>
+            <div class="card-tagline">Know a great spot? Tell us.</div>
+            <p class="card-desc">We're building out the entertainment section with the best of CB. If you know a mini golf course, go-kart track, or other fun spot on the island that belongs here, use the contact form and we'll add it.</p>
+            <div class="card-tags"><span class="tag">Coming Soon</span></div>
           </div>
         </div>
 
@@ -786,10 +467,8 @@
 
     <!-- SHOPS -->
     <div class="tab-panel" id="panel-shop">
-      <div class="card-grid">
-        <div style="padding:3rem; text-align:center; color:var(--muted); font-size:0.95rem; line-height:1.75; grid-column:1/-1;">
-          Local shops coming soon. Know a great one? <a href="#contact" style="color:var(--teal)">Tell us about it.</a>
-        </div>
+      <div style="padding:3rem 0; color:var(--muted); font-size:0.95rem; line-height:1.75;">
+        Local shops coming soon. Know a great one? <a href="#contact" style="color:var(--teal)">Tell us about it.</a>
       </div>
     </div>
 
@@ -803,7 +482,7 @@
             <div class="card-cat">Motel</div>
             <div class="card-name">Dolphin Lane Motel</div>
             <div class="card-tagline">318 Carolina Beach Ave N · Classic CB stay</div>
-            <p class="card-desc">A classic Carolina Beach motel that puts you right in the heart of the island. Rooms, efficiencies, and cottages available — the kind of unpretentious, comfortable place that fits the CB spirit perfectly. Everything you need for a great beach trip without the resort price tag. A true island stay.</p>
+            <p class="card-desc">A classic Carolina Beach motel right in the heart of the island. Rooms, efficiencies, and cottages available — the kind of unpretentious, comfortable place that fits the CB spirit perfectly. Everything you need for a great beach trip without the resort price tag.</p>
             <div class="card-tags"><span class="tag">Motel</span><span class="tag">Cottages</span><span class="tag">Classic CB</span></div>
           </div>
         </div>
@@ -915,61 +594,14 @@
   </div>
 </section>
 
-<!-- ━━━ MUSIC & EVENTS ━━━ -->
+<!-- MUSIC & EVENTS -->
 <section id="events">
   <div class="container">
     <p class="section-eyebrow">Live Music &amp; Events</p>
     <h2 class="section-title">What's Happening on the Island</h2>
-    <p class="section-lead">Community events, live music, festivals, and local happenings. Submit your event using the contact form below.</p>
+    <p class="section-lead">Real confirmed events only. Submit your event using the contact form below and we'll add it.</p>
     <div class="events-grid" id="events-grid">
-      <div class="event-card">
-        <div class="event-date"><div class="mo">Jun</div><div class="d">7</div></div>
-        <div class="event-info">
-          <div class="event-name">The Embers feat. Craig Woolard</div>
-          <div class="event-venue">Shuckin' Shack Oyster Bar · 8pm</div>
-          <span class="event-badge badge-music">Live Music</span>
-        </div>
-      </div>
-      <div class="event-card">
-        <div class="event-date"><div class="mo">Jun</div><div class="d">14</div></div>
-        <div class="event-info">
-          <div class="event-name">Carolina Beach Music Festival</div>
-          <div class="event-venue">Lake Park · All Day</div>
-          <span class="event-badge badge-fest">Festival</span>
-        </div>
-      </div>
-      <div class="event-card">
-        <div class="event-date"><div class="mo">Jun</div><div class="d">18</div></div>
-        <div class="event-info">
-          <div class="event-name">Trivia Night</div>
-          <div class="event-venue">Ol' Luther's · 7pm</div>
-          <span class="event-badge badge-comm">Community</span>
-        </div>
-      </div>
-      <div class="event-card">
-        <div class="event-date"><div class="mo">Jun</div><div class="d">21</div></div>
-        <div class="event-info">
-          <div class="event-name">Sea Turtle Nest Watch Volunteer Night</div>
-          <div class="event-venue">CB Beach Access · Dusk</div>
-          <span class="event-badge badge-comm">Community</span>
-        </div>
-      </div>
-      <div class="event-card">
-        <div class="event-date"><div class="mo">Jun</div><div class="d">28</div></div>
-        <div class="event-info">
-          <div class="event-name">4th of July Weekend Kickoff · Live Band</div>
-          <div class="event-venue">The Boardwalk · 7pm</div>
-          <span class="event-badge badge-music">Live Music</span>
-        </div>
-      </div>
-      <div class="event-card">
-        <div class="event-date"><div class="mo">Jul</div><div class="d">4</div></div>
-        <div class="event-info">
-          <div class="event-name">4th of July Fireworks</div>
-          <div class="event-venue">Carolina Beach · Oceanfront · Dark</div>
-          <span class="event-badge badge-fest">Festival</span>
-        </div>
-      </div>
+      <!-- loaded from events.json -->
     </div>
     <div class="events-note">
       📅 <strong>Know about an event?</strong> Use the contact form below and we'll add it to the calendar.
@@ -977,7 +609,7 @@
   </div>
 </section>
 
-<!-- ━━━ COMMUNITY ━━━ -->
+<!-- COMMUNITY -->
 <section id="community">
   <div class="container">
     <p class="section-eyebrow">For Locals &amp; Regulars</p>
@@ -1018,7 +650,7 @@
   </div>
 </section>
 
-<!-- ━━━ PHOTO STRIP ━━━ -->
+<!-- PHOTO STRIP -->
 <div class="photo-strip">
   <div class="photo-strip-inner">
     <p class="section-eyebrow" style="justify-content:center">From the Island</p>
@@ -1033,7 +665,7 @@
   </div>
 </div>
 
-<!-- ━━━ NEWS ━━━ -->
+<!-- NEWS -->
 <section id="news">
   <div class="container">
     <p class="section-eyebrow">Carolina Beach Only</p>
@@ -1045,7 +677,7 @@
   </div>
 </section>
 
-<!-- ━━━ ABOUT ━━━ -->
+<!-- ABOUT -->
 <section id="about">
   <div class="container">
     <div class="about-inner">
@@ -1068,7 +700,7 @@
   </div>
 </section>
 
-<!-- ━━━ CONTACT ━━━ -->
+<!-- CONTACT -->
 <section id="contact">
   <div class="container">
     <div class="contact-inner">
@@ -1098,7 +730,7 @@
   </div>
 </section>
 
-<!-- ━━━ FOOTER ━━━ -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div>
@@ -1118,7 +750,6 @@
 </footer>
 
 <script>
-  /* ━━━ TABS ━━━ */
   function switchTab(btn, id) {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
@@ -1126,17 +757,20 @@
     document.getElementById('panel-' + id).classList.add('active');
   }
 
-  /* ━━━ NEWS ━━━ */
   const BLOCK = [
     'mayor','city council','councilman','councilwoman','councilmember',
     'town council','commissioner','alderman','municipal','city hall',
     'ordinance','rezoning','zoning','ballot','election','vote',
     'incumbent','wilmington','new hanover county','county commission',
-    'board of','public hearing','annexation'
+    'board of','public hearing','annexation',
+    'shooting','murder','crime','arrest','police','officer',
+    'court','trial','lawsuit','charged','suspect','killed',
+    'accident','crash','death','died','hurricane','storm damage',
+    'piracy','torrent','download','episode','season','series',
   ];
 
   function blocked(a) {
-    const t = ((a.title||'') + ' ' + (a.description||'')).toLowerCase();
+    const t = ((a.title||'') + ' ' + (a.description||'') + ' ' + (a.source?.name||'')).toLowerCase();
     return BLOCK.some(k => t.includes(k));
   }
 
@@ -1157,31 +791,23 @@
           </div>`).join('');
         return;
       }
-    } catch {}
-    grid.innerHTML = [
-      { s:'Star News Online', t:'Boardwalk events ramp up for summer season',       d:'Local vendors and entertainment acts line up for a record summer on the island.',      dt:'May 15, 2025' },
-      { s:'Port City Daily',  t:'Freeman Park beach permit process opens for 2025', d:'New hangtag permits go on sale — grab them early before summer crowds arrive.',        dt:'May 10, 2025' },
-      { s:'WECT News 6',      t:'Sea turtle nesting season begins on CB shores',    d:'Volunteer monitors spotted the first nest of the season over the weekend.',             dt:'May 8, 2025'  },
-      { s:'CB Community',     t:'New seafood spot to open on the boardwalk',        d:'A longtime local family brings a new concept to a long-empty boardwalk space.',        dt:'May 5, 2025'  },
-      { s:'Star News Online', t:'Venus flytrap bloom peaks at CB State Park',       d:'Botanists and visitors arrive each spring to see wild populations in native habitat.', dt:'Apr 28, 2025' },
-      { s:'Port City Daily',  t:'Dolphin sightings increase along the ICW',         d:'Marine biologists say the bottlenose dolphin population is having a strong spring.',   dt:'Apr 20, 2025' },
-    ].map(a=>`
-      <div class="news-card">
-        <div class="news-source">${a.s}</div>
-        <div class="news-title">${a.t}</div>
-        <p class="news-desc">${a.d}</p>
-        <div class="news-date">${a.dt}</div>
-      </div>`).join('');
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--muted);">Check back soon for the latest Carolina Beach news.</div>';
+    } catch {
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--muted);">Check back soon for the latest Carolina Beach news.</div>';
+    }
   }
 
-  /* ━━━ EVENTS ━━━ */
   async function loadEvents() {
+    const grid = document.getElementById('events-grid');
     try {
       const res = await fetch('/events.json');
       if (!res.ok) throw new Error();
       const events = await res.json();
-      if (!events.length) return;
-      document.getElementById('events-grid').innerHTML = events.map(e => `
+      if (!events.length) {
+        grid.innerHTML = '<div style="padding:2rem;color:var(--muted);font-size:0.95rem;">Events coming soon. Submit one using the contact form below.</div>';
+        return;
+      }
+      grid.innerHTML = events.map(e => `
         <div class="event-card">
           <div class="event-date">
             <div class="mo">${esc(e.month)}</div>
@@ -1193,7 +819,9 @@
             <span class="event-badge badge-${esc(e.type||'music')}">${esc(e.label||'Event')}</span>
           </div>
         </div>`).join('');
-    } catch {}
+    } catch {
+      grid.innerHTML = '<div style="padding:2rem;color:var(--muted);font-size:0.95rem;">Events coming soon. Submit one using the contact form below.</div>';
+    }
   }
 
   function esc(s) {
@@ -1208,12 +836,9 @@
   loadEvents();
   loadNews();
 
-  /* ━━━ CONTACT ━━━ */
   document.getElementById('contact-form').addEventListener('submit', async e => {
     e.preventDefault();
-    await fetch('/', { method:'POST',
-      headers:{'Content-Type':'application/x-www-form-urlencoded'},
-      body: new URLSearchParams(new FormData(e.target)).toString() });
+    await fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: new URLSearchParams(new FormData(e.target)).toString() });
     e.target.style.display = 'none';
     document.getElementById('form-success').style.display = 'block';
   });
