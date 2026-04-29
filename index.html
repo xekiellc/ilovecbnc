@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I ♥ CBNC — Carolina Beach, NC</title>
+  <meta name="description" content="The people, businesses, music, and culture of Carolina Beach, NC. A community guide built with love." />
+  <meta property="og:title" content="I ♥ CBNC — Carolina Beach, NC" />
+  <meta property="og:description" content="The people, businesses, music, and culture of Carolina Beach, NC." />
+  <meta property="og:image" content="/og-image.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       DESIGN TOKENS — swap any hex here to retheme
+       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    :root {
+      --navy:        #071A2E;
+      --navy-mid:    #0C2340;
+      --navy-light:  #112B4A;
+      --teal:        #00E5C8;
+      --teal-dim:    #00BFA5;
+      --coral:       #FF5757;
+      --coral-dim:   #CC3E3E;
+      --white:       #FFFFFF;
+      --muted:       rgba(255,255,255,0.48);
+      --border:      rgba(0,229,200,0.15);
+      --font-head:   'Syne', sans-serif;
+      --font-body:   'Nunito', sans-serif;
+
+      /* ── Hero overlay darkness ──
+         Change this ONE value to adjust how dark the wave gif overlay is.
+         0.0 = fully transparent (wave only, no text visibility)
+         1.0 = fully opaque navy (no wave visible)
+         Recommended range: 0.45 – 0.70                          */
+      --overlay-opacity: 0.55;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ━━━ NAV ━━━ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: 60px;
+      background: rgba(7,26,46,0.96);
+      border-bottom: 2px solid var(--teal-dim);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-logo {
+      font-family: var(--font-head);
+      font-size: 1.2rem; font-weight: 800;
+      color: var(--teal); text-decoration: none;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .nav-logo .heart { color: var(--coral); }
+
+    .nav-links { display: flex; gap: 1.6rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.7rem; font-weight: 800;
+      letter-spacing: 2px; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+
+    @media (max-width: 700px) { .nav-links { display: none; } }
+
+    /* ━━━ HERO ━━━ */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 80px 1.5rem 60px;
+      overflow: hidden;
+    }
+
+    /* The wave gif background */
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('/waves.gif');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    /* Dark overlay — adjust --overlay-opacity above */
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(7,26,46,var(--overlay-opacity))   0%,
+        rgba(7,26,46,calc(var(--overlay-opacity) - 0.15)) 45%,
+        rgba(7,26,46,var(--overlay-opacity))   100%
+      );
+    }
+
+    /* All hero content sits above the overlay */
+    .hero-content { position: relative; z-index: 2; }
+
+    .hero-eyebrow {
+      display: inline-block;
+      border: 1.5px solid var(--teal);
+      color: var(--teal);
+      font-size: 0.68rem; font-weight: 800;
+      letter-spacing: 4px; text-transform: uppercase;
+      padding: 5px 18px; border-radius: 30px;
+      margin-bottom: 1.4rem;
+      opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards;
+    }
+
+    .hero-logo {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.12em;
+      font-family: var(--font-head);
+      font-size: clamp(4.5rem, 14vw, 9rem);
+      font-weight: 800; line-height: 1;
+      color: var(--white);
+      text-shadow: 0 4px 30px rgba(0,0,0,0.7);
+      opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards;
+    }
+
+    .hero-heart {
+      width: 0.82em; height: 0.82em; flex-shrink: 0;
+      animation: heartbeat 2.4s ease-in-out 1.2s infinite;
+      filter: drop-shadow(0 3px 12px rgba(255,87,87,0.5));
+    }
+
+    @keyframes heartbeat {
+      0%,100% { transform: scale(1); }
+      14%      { transform: scale(1.18); }
+      28%      { transform: scale(1); }
+      42%      { transform: scale(1.1); }
+      56%      { transform: scale(1); }
+    }
+
+    .hero-sub {
+      font-size: clamp(0.7rem, 1.8vw, 0.85rem);
+      font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-top: 0.9rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+      opacity: 0; animation: fadeUp 0.7s ease 0.5s forwards;
+    }
+
+    .hero-big4 {
+      margin-top: 1.6rem;
+      opacity: 0; animation: fadeUp 0.7s ease 0.65s forwards;
+    }
+
+    .hero-big4-row {
+      font-family: var(--font-head);
+      font-size: clamp(1rem, 2.8vw, 1.35rem);
+      font-weight: 700; color: var(--teal);
+      letter-spacing: 0.5px; padding: 0.2rem 0;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.9);
+    }
+
+    .hero-big4-sep { color: var(--coral); margin: 0 0.55rem; opacity: 0.9; }
+
+    .hero-btns {
+      margin-top: 2rem;
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.7s ease 0.8s forwards;
+    }
+
+    .btn-primary {
+      background: var(--coral); color: white;
+      font-family: var(--font-body);
+      font-size: 0.78rem; font-weight: 800;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 0.85rem 2rem; border-radius: 30px;
+      border: none; cursor: pointer; text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 20px rgba(255,87,87,0.35);
+    }
+    .btn-primary:hover { background: var(--coral-dim); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent; color: var(--teal);
+      font-family: var(--font-body);
+      font-size: 0.78rem; font-weight: 800;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 0.85rem 2rem; border-radius: 30px;
+      border: 2px solid var(--teal); cursor: pointer; text-decoration: none;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-outline:hover { background: var(--teal); color: var(--navy); transform: translateY(-2px); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ━━━ TICKER ━━━ */
+    .ticker {
+      background: var(--teal-dim);
+      padding: 0.65rem 0; overflow: hidden; white-space: nowrap;
+      position: relative; z-index: 2;
+    }
+    .ticker-inner { display: inline-block; animation: tickerMove 30s linear infinite; }
+    .ticker-inner span {
+      font-size: 0.68rem; font-weight: 800;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--navy); padding: 0 1.6rem;
+    }
+    .ticker-inner span::before { content: '★'; margin-right: 0.6rem; color: var(--coral); }
+    @keyframes tickerMove { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ━━━ SHARED SECTION STYLES ━━━ */
+    section { padding: 5rem 1.5rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-eyebrow {
+      font-size: 0.68rem; font-weight: 800;
+      letter-spacing: 4px; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800; color: var(--white);
+      line-height: 1.1; margin-bottom: 0.6rem;
+    }
+
+    .section-lead {
+      font-size: 1rem; color: var(--muted);
+      max-width: 560px; line-height: 1.75;
+    }
+
+    /* ━━━ TABS ━━━ */
+    .tabs-bar {
+      display: flex; flex-wrap: wrap;
+      margin: 2.5rem 0 2rem;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .tab-btn {
+      padding: 0.6rem 1.2rem;
+      font-family: var(--font-body);
+      font-size: 0.72rem; font-weight: 800;
+      letter-spacing: 2px; text-transform: uppercase;
+      cursor: pointer; border: none;
+      background: transparent; color: var(--muted);
+      border-bottom: 2px solid transparent; margin-bottom: -2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .tab-btn.active { color: var(--teal); border-bottom-color: var(--coral); }
+    .tab-btn:hover:not(.active) { color: var(--white); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ━━━ PLACE CARDS ━━━ */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .place-card {
+      background: var(--navy-light);
+      border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .place-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--teal);
+      box-shadow: 0 8px 30px rgba(0,229,200,0.1);
+    }
+
+    .card-accent { height: 4px; }
+    .card-body { padding: 1.2rem 1.4rem 1.4rem; }
+
+    .card-cat {
+      font-size: 0.6rem; font-weight: 800;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 0.5rem;
+    }
+
+    .card-name {
+      font-family: var(--font-head);
+      font-size: 1.15rem; font-weight: 800;
+      color: var(--white); line-height: 1.2; margin-bottom: 0.35rem;
+    }
+
+    .card-tagline {
+      font-size: 0.78rem; color: var(--muted);
+      margin-bottom: 0.8rem; font-style: italic;
+    }
+
+    .card-desc {
+      font-size: 0.88rem; color: rgba(255,255,255,0.7); line-height: 1.65;
+    }
+
+    .card-tags { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    .tag {
+      font-size: 0.62rem; font-weight: 800;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: 0.25rem 0.65rem; border-radius: 20px;
+      background: rgba(0,229,200,0.1); color: var(--teal);
+      border: 1px solid rgba(0,229,200,0.2);
+    }
+
+    /* ━━━ EVENTS ━━━ */
+    #events { background: var(--navy-mid); }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem; margin-top: 2rem;
+    }
+
+    .event-card {
+      background: var(--navy-light);
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.2rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .event-card:hover { border-color: var(--coral); transform: translateY(-3px); }
+
+    .event-date {
+      background: var(--coral); border-radius: 8px;
+      width: 48px; height: 48px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .event-date .mo {
+      font-size: 0.55rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: rgba(255,255,255,0.85); line-height: 1;
+    }
+    .event-date .d {
+      font-family: var(--font-head);
+      font-size: 1.3rem; font-weight: 800; color: white; line-height: 1;
+    }
+
+    .event-info { flex: 1; min-width: 0; }
+    .event-name {
+      font-family: var(--font-head);
+      font-size: 0.95rem; font-weight: 800;
+      color: var(--white); margin-bottom: 0.3rem;
+    }
+    .event-venue { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.5rem; }
+
+    .event-badge {
+      display: inline-block;
+      font-size: 0.6rem; font-weight: 800;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 0.2rem 0.6rem; border-radius: 10px;
+    }
+    .badge-music { background: rgba(0,229,200,0.12); color: var(--teal); border: 1px solid rgba(0,229,200,0.25); }
+    .badge-fest  { background: rgba(255,87,87,0.15); color: #FF9999; border: 1px solid rgba(255,87,87,0.25); }
+    .badge-comm  { background: rgba(255,200,50,0.1); color: #FFD966; border: 1px solid rgba(255,200,50,0.2); }
+
+    .events-note {
+      margin-top: 1.5rem; font-size: 0.78rem; color: var(--muted);
+      padding: 1rem 1.2rem;
+      border: 1px solid var(--border); border-radius: 10px; line-height: 1.6;
+    }
+
+    /* ━━━ COMMUNITY ━━━ */
+    #community { background: var(--navy); }
+
+    .community-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.2rem; margin-top: 2rem;
+    }
+
+    .comm-card {
+      border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .comm-card:hover { border-color: var(--teal); background: var(--navy-light); }
+
+    .comm-icon { font-size: 1.6rem; margin-bottom: 0.8rem; }
+    .comm-title {
+      font-family: var(--font-head);
+      font-size: 1rem; font-weight: 800; color: var(--teal); margin-bottom: 0.5rem;
+    }
+    .comm-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+
+    /* ━━━ PHOTO STRIP ━━━ */
+    .photo-strip { background: var(--navy-mid); padding: 3.5rem 1.5rem; }
+    .photo-strip-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+
+    .photo-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0.8rem; margin-top: 1.5rem;
+    }
+    @media (max-width: 600px) { .photo-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .photo-slot {
+      aspect-ratio: 1;
+      background: var(--navy-light);
+      border: 1px dashed rgba(0,229,200,0.2);
+      border-radius: 10px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 0.4rem;
+      transition: border-color 0.2s, background 0.2s; cursor: pointer;
+    }
+    .photo-slot:hover { border-color: var(--teal); background: rgba(0,229,200,0.04); }
+    .photo-slot-icon { font-size: 1.4rem; opacity: 0.3; }
+    .photo-slot-text {
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted);
+    }
+
+    /* ━━━ NEWS ━━━ */
+    #news { background: var(--navy-light); }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.2rem; margin-top: 2rem;
+    }
+
+    .news-card {
+      background: var(--navy-mid);
+      border: 1px solid var(--border); border-radius: 12px; padding: 1.3rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .news-card:hover { border-color: var(--teal); transform: translateY(-3px); }
+
+    .news-source {
+      font-size: 0.6rem; font-weight: 800;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 0.6rem;
+    }
+
+    .news-title {
+      font-family: var(--font-head);
+      font-size: 0.95rem; font-weight: 700;
+      color: var(--white); line-height: 1.35; margin-bottom: 0.7rem;
+    }
+    .news-title a { color: inherit; text-decoration: none; }
+    .news-title a:hover { color: var(--teal); }
+    .news-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.7rem; }
+    .news-date {
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: rgba(255,255,255,0.22);
+    }
+
+    /* ━━━ ABOUT ━━━ */
+    #about { background: var(--coral); }
+    #about .section-eyebrow { color: rgba(255,255,255,0.7); }
+    #about .section-title { color: white; }
+
+    .about-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+    }
+    @media (max-width: 700px) { .about-inner { grid-template-columns: 1fr; gap: 2rem; } }
+
+    .about-body {
+      font-size: 1rem; color: rgba(255,255,255,0.88);
+      line-height: 1.85; margin-top: 1rem;
+    }
+
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .stat {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px; padding: 1.3rem; text-align: center;
+    }
+    .stat-num {
+      font-family: var(--font-head);
+      font-size: 2rem; font-weight: 800; color: white; display: block;
+    }
+    .stat-lbl {
+      font-size: 0.62rem; font-weight: 800;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: rgba(255,255,255,0.65); margin-top: 0.3rem;
+    }
+
+    /* ━━━ CONTACT ━━━ */
+    #contact { background: var(--navy); }
+
+    .contact-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: start;
+    }
+    @media (max-width: 700px) { .contact-inner { grid-template-columns: 1fr; gap: 2rem; } }
+
+    .contact-body {
+      font-size: 0.95rem; color: var(--muted);
+      line-height: 1.75; margin-top: 1rem;
+    }
+
+    .contact-ways { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.9rem; }
+    .contact-way {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.85rem; font-weight: 700; color: var(--white);
+    }
+    .way-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--teal); color: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+
+    .form-group { margin-bottom: 1rem; }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%; padding: 0.85rem 1rem;
+      background: var(--navy-light);
+      border: 1px solid var(--border); border-radius: 10px;
+      color: var(--white); font-family: var(--font-body);
+      font-size: 0.9rem; outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus, textarea:focus { border-color: var(--teal); }
+    textarea { resize: vertical; min-height: 130px; }
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.25); }
+
+    .btn-submit {
+      width: 100%; padding: 0.95rem;
+      background: var(--teal); color: var(--navy);
+      font-family: var(--font-body);
+      font-size: 0.8rem; font-weight: 800;
+      letter-spacing: 2px; text-transform: uppercase;
+      border: none; border-radius: 10px; cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-submit:hover { background: var(--white); transform: translateY(-2px); }
+
+    .form-success {
+      display: none; text-align: center; padding: 2rem;
+      font-family: var(--font-head); font-size: 1.1rem;
+      color: var(--teal); border: 1px solid var(--border); border-radius: 12px;
+    }
+
+    /* ━━━ AUDIO PLAYER BAR ━━━ */
+    .audio-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 300;
+      background: rgba(7,26,46,0.97);
+      border-top: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+      padding: 0.6rem 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+    .audio-bar.visible { transform: translateY(0); }
+
+    .audio-btn {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--teal); border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: var(--navy); font-size: 0.85rem;
+      transition: background 0.2s;
+    }
+    .audio-btn:hover { background: var(--white); }
+
+    .audio-info { flex: 1; min-width: 0; }
+    .audio-title {
+      font-size: 0.78rem; font-weight: 800; color: var(--teal);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .audio-artist { font-size: 0.65rem; color: var(--muted); letter-spacing: 1px; }
+
+    .audio-progress { flex: 2; display: flex; align-items: center; gap: 0.5rem; }
+    .progress-bar {
+      flex: 1; height: 3px; background: rgba(255,255,255,0.1);
+      border-radius: 3px; cursor: pointer; position: relative;
+    }
+    .progress-fill { height: 100%; background: var(--teal); border-radius: 3px; width: 0%; }
+    .audio-time { font-size: 0.65rem; color: var(--muted); white-space: nowrap; }
+
+    .audio-vol { display: flex; align-items: center; gap: 0.4rem; }
+    .audio-vol input[type=range] {
+      width: 70px; height: 3px; padding: 0; border: none;
+      background: rgba(255,255,255,0.15); border-radius: 3px;
+    }
+
+    .audio-close {
+      background: none; border: none; cursor: pointer;
+      color: var(--muted); font-size: 1.1rem; flex-shrink: 0;
+      transition: color 0.2s;
+    }
+    .audio-close:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      .audio-progress { display: none; }
+      .audio-vol { display: none; }
+    }
+
+    /* ━━━ FOOTER ━━━ */
+    footer {
+      background: var(--navy-mid);
+      border-top: 2px solid var(--border);
+      padding: 3rem 1.5rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: flex-end;
+      flex-wrap: wrap; gap: 1.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .footer-logo {
+      font-family: var(--font-head);
+      font-size: 1.8rem; font-weight: 800; color: var(--teal);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .footer-logo .heart { color: var(--coral); }
+    .footer-tagline { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; }
+
+    .footer-nav { display: flex; gap: 1.5rem; flex-wrap: wrap; list-style: none; }
+    .footer-nav a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.7rem; font-weight: 800;
+      letter-spacing: 2px; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .footer-nav a:hover { color: var(--teal); }
+
+    .footer-copy {
+      max-width: 1100px; margin: 1.5rem auto 0;
+      font-size: 0.7rem; color: rgba(255,255,255,0.2); letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ━━━ NAV ━━━ -->
+<nav>
+  <a href="#" class="nav-logo">I <span class="heart">♥</span> CBNC</a>
+  <ul class="nav-links">
+    <li><a href="#guide">Guide</a></li>
+    <li><a href="#events">Music &amp; Events</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ━━━ HERO ━━━ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Carolina Beach, North Carolina</div>
+
+    <div class="hero-logo">
+      <span>I</span>
+      <svg class="hero-heart" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#FF5757" d="M12 21C12 21 2 13.5 2 7.5a5.5 5.5 0 0 1 10-3.12A5.5 5.5 0 0 1 22 7.5C22 13.5 12 21 12 21z"/>
+      </svg>
+      <span>CBNC</span>
+    </div>
+
+    <p class="hero-sub">People &nbsp;·&nbsp; Businesses &nbsp;·&nbsp; Community</p>
+
+    <div class="hero-big4">
+      <div class="hero-big4-row">
+        Carolina Beach <span class="hero-big4-sep">·</span> The Boardwalk
+      </div>
+      <div class="hero-big4-row">
+        Freeman Park <span class="hero-big4-sep">·</span> Fort Fisher
+      </div>
+    </div>
+
+    <div class="hero-btns">
+      <a href="#guide" class="btn-primary">Explore the Guide</a>
+      <a href="#events" class="btn-outline">Music &amp; Events</a>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ TICKER ━━━ -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>Carolina Beach</span><span>The Boardwalk</span><span>Freeman Park</span><span>Fort Fisher</span><span>Live Music</span><span>Community</span><span>Sea Turtles</span><span>Dolphins</span><span>Ghost Crabs</span><span>Summer Nights</span>
+    <span>Carolina Beach</span><span>The Boardwalk</span><span>Freeman Park</span><span>Fort Fisher</span><span>Live Music</span><span>Community</span><span>Sea Turtles</span><span>Dolphins</span><span>Ghost Crabs</span><span>Summer Nights</span>
+  </div>
+</div>
+
+<!-- ━━━ GUIDE ━━━ -->
+<section id="guide">
+  <div class="container">
+    <p class="section-eyebrow">Visitor Guide</p>
+    <h2 class="section-title">The Best of Carolina Beach</h2>
+    <p class="section-lead">Real picks. Local knowledge. No fluff — and zero government spin.</p>
+
+    <div class="tabs-bar">
+      <button class="tab-btn active" onclick="switchTab(this,'eat')">🍽 Eat</button>
+      <button class="tab-btn" onclick="switchTab(this,'bars')">🍺 Bars</button>
+      <button class="tab-btn" onclick="switchTab(this,'shop')">🛍 Shops</button>
+      <button class="tab-btn" onclick="switchTab(this,'stay')">🏖 Stay</button>
+      <button class="tab-btn" onclick="switchTab(this,'do')">🌊 Things To Do</button>
+      <button class="tab-btn" onclick="switchTab(this,'tips')">📍 Local Tips</button>
+    </div>
+
+    <!-- EAT -->
+    <div class="tab-panel active" id="panel-eat">
+      <div class="card-grid">
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--coral)"></div>
+          <div class="card-body">
+            <div class="card-cat">Boardwalk Legend</div>
+            <div class="card-name">Britt's Donut Shop</div>
+            <div class="card-tagline">Since 1939 · Cash only · Worth every minute</div>
+            <p class="card-desc">Hot glazed donuts made fresh and open right in front of you on the boardwalk every summer night. Lines wrap the corner. If you do one thing on the boardwalk, it's this.</p>
+            <div class="card-tags"><span class="tag">Boardwalk</span><span class="tag">Cash Only</span><span class="tag">Iconic</span></div>
+          </div>
+        </div>
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--teal)"></div>
+          <div class="card-body">
+            <div class="card-cat">Seafood</div>
+            <div class="card-name">Capt'n Bill's Backyard Grill</div>
+            <div class="card-tagline">Local catch · Casual · Decades of loyalty</div>
+            <p class="card-desc">Fresh-caught local seafood in a no-pretense backyard setting. The shrimp basket and hush puppies are legendary. Regulars have been coming back for decades.</p>
+            <div class="card-tags"><span class="tag">Seafood</span><span class="tag">Casual</span><span class="tag">Local</span></div>
+          </div>
+        </div>
+        <div class="place-card">
+          <div class="card-accent" style="background:#FFD966"></div>
+          <div class="card-body">
+            <div class="card-cat">Waterfront Dining</div>
+            <div class="card-name">The Deck House</div>
+            <div class="card-tagline">Fish tacos · Ocean views · Sunset dining</div>
+            <p class="card-desc">Grab a deck table and let the ocean breeze do its thing. Fresh local catch in the tacos and a sunset view that ruins you for everywhere else.</p>
+            <div class="card-tags"><span class="tag">Waterfront</span><span class="tag">Tacos</span><span class="tag">Sunset</span></div>
+          </div>
+        </div>
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--teal)"></div>
+          <div class="card-body">
+            <div class="card-cat">Coffee &amp; Breakfast</div>
+            <div class="card-name">Beach Brew Co.</div>
+            <div class="card-tagline">Strong espresso · Açaí bowls · Patio life</div>
+            <p class="card-desc">The best way to start a beach day. Strong espresso, açaí bowls, breakfast sandwiches. The patio fills fast — arrive early and claim the corner table.</p>
+            <div class="card-tags"><span class="tag">Coffee</span><span class="tag">Breakfast</span><span class="tag">Patio</span></div>
+          </div>
+        </div>
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--coral)"></div>
+          <div class="card-body">
+            <div class="card-cat">Dessert</div>
+            <div class="card-name">Island Creamery</div>
+            <div class="card-tagline">Handcrafted · Seasonal · Family tradition</div>
+            <p class="card-desc">Handcrafted small-batch ice cream with rotating seasonal flavors. The salted caramel is legendary. Post-beach ice cream here becomes an annual family ritual fast.</p>
+            <div class="card-tags"><span class="tag">Ice Cream</span><span class="tag">Family</span><span class="tag">Seasonal</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BARS -->
+    <div class="tab-panel" id="panel-bars">
+      <div class="card-grid">
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--coral)"></div>
+          <div class="card-body">
+            <div class="card-cat">Dive Bar</div>
+            <div class="card-name">Ol' Luther's</div>
+            <div class="card-tagline">Locals only energy · Cold beer · No pretense</div>
+            <p class="card-desc">Walk in a stranger, leave knowing half the room. Cold beer, cold AC, conversations till closing. The quintessential Carolina Beach local bar.</p>
+            <div class="card-tags"><span class="tag">Local</span><span class="tag">Dive</span><span class="tag">Cash Friendly</span></div>
+          </div>
+        </div>
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--teal)"></div>
+          <div class="card-body">
+            <div class="card-cat">Live Music Bar</div>
+            <div class="card-name">Shuckin' Shack Oyster Bar</div>
+            <div class="card-tagline">Oysters · Live music · Summer nights</div>
+            <p class="card-desc">Cold oysters on the half shell, cold drinks, live music on weekends. One of the best summer-night vibes on the island. Get there early on Fridays.</p>
+            <div class="card-tags"><span class="tag">Live Music</span><span class="tag">Oysters</span><span class="tag">Weekends</span></div>
+          </div>
+        </div>
+        <div class="place-card">
+          <div class="card-accent" style="background:#FFD966"></div>
+          <div class="card-body">
+            <div class="card-cat">Beach Bar</div>
+            <div class="card-name">Pelican Pete's Cantina</div>
+            <div class="card-tagline">Frozen drinks · Waterfront · Sandy feet welcome</div>
+            <p class="card-desc">Frozen margaritas, waterfront seats, sunset that ruins you for everywhere else. Sandy feet welcome — this place wouldn't have it any other way.</p>
+            <div class="card-tags"><span class="tag">Waterfront</span><span class="tag">Frozen Drinks</span><span class="tag">Casual</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHOPS -->
+    <div class="tab-panel" id="panel-shop">
+      <div class="card-grid">
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--coral)"></div>
+          <div class="card-body">
+            <div class="card-cat">Gifts &amp; Souvenirs</div>
+            <div class="card-name">Shell Shop &amp; Co.</div>
+            <div class="card-tagline">Local shells · Handmade jewelry · Community institution</div>
+            <p class="card-desc">Best selection of local shells and handmade coastal gifts on the island. Staff know their regulars by name. Represents the town's soul better than any other shop.</p>
+            <div class="card-tags"><span class="tag">Local</span><span class="tag">Handmade</span><span class="tag">Gifts</span></div>
+          </div>
+        </div>
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--teal)"></div>
+          <div class="card-body">
+            <div class="card-cat">Surf &amp; Outdoor</div>
+            <div class="card-name">Liquid Logic</div>
+            <div class="card-tagline">Surf gear · Kayaks · Real earned advice</div>
+            <p class="card-desc">Boards, kayaks, and a staff that actually surfs and paddles. The advice here is earned, not Googled. Come here before you get in the water for anything.</p>
+            <div class="card-tags"><span class="tag">Surf</span><span class="tag">Rentals</span><span class="tag">Local Crew</span></div>
+          </div>
+        </div>
+        <div class="place-card">
+          <div class="card-accent" style="background:#FFD966"></div>
+          <div class="card-body">
+            <div class="card-cat">Apparel</div>
+            <div class="card-name">Island Threads</div>
+            <div class="card-tagline">Local designs · Artist-made · Actually wearable</div>
+            <p class="card-desc">Not the generic tourist tee. Artist-designed pieces rooted in actual Carolina Beach culture. The kind of shirt that starts real conversations back home.</p>
+            <div class="card-tags"><span class="tag">Local Art</span><span class="tag">Apparel</span><span class="tag">Unique</span></div>
+          </div>
+        </div>
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--teal)"></div>
+          <div class="card-body">
+            <div class="card-cat">Books &amp; Gifts</div>
+            <div class="card-name">Coastal Currents Books</div>
+            <div class="card-tagline">Local titles · Beach reads · Community hub</div>
+            <p class="card-desc">A proper independent bookshop with a strong local section. Coastal history, local authors, the beach reads you actually want. Community bulletin board inside.</p>
+            <div class="card-tags"><span class="tag">Indie</span><span class="tag">Local</span><span class="tag">Community</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAY -->
+    <div class="tab-panel" id="panel-stay">
+      <div class="card-grid">
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--coral)"></div>
+          <div class="card-body">
+            <div class="card-cat">Best for Families</div>
+            <div class="card-name">Vacation Rental Houses</div>
+            <div class="card-tagline">VRBO · Airbnb · Book in January</div>
+            <p class="card-desc">For families, renting a house is the only move. Kitchen, yard, parking, space to breathe. The good ones vanish in January for summer. Set a reminder and move fast.</p>
+            <div class="card-tags"><span class="tag">Families</span><span class="tag">Full Kitchen</span><span class="tag">Book Early</span></div>
+          </div>
+        </div>
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--teal)"></div>
+          <div class="card-body">
+            <div class="card-cat">Hotel</div>
+            <div class="card-name">Carolina Beach Hotel</div>
+            <div class="card-tagline">Beachfront · Pool · Boardwalk steps away</div>
+            <p class="card-desc">Right on the ocean with direct beach access and a pool. Walking distance to the boardwalk. Great if you want hotel amenities without leaving the island.</p>
+            <div class="card-tags"><span class="tag">Beachfront</span><span class="tag">Pool</span><span class="tag">Boardwalk</span></div>
+          </div>
+        </div>
+        <div class="place-card">
+          <div class="card-accent" style="background:#4CAF84"></div>
+          <div class="card-body">
+            <div class="card-cat">Camping</div>
+            <div class="card-name">Carolina Beach State Park</div>
+            <div class="card-tagline">Full hookups · Marsh views · Reserve early</div>
+            <p class="card-desc">Camp inside the state park. Full hookups available. Waking up to marsh sounds and birdsong before heading to the beach is one of those quiet magic things.</p>
+            <div class="card-tags"><span class="tag">Nature</span><span class="tag">Budget</span><span class="tag">Reserve Early</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- THINGS TO DO -->
+    <div class="tab-panel" id="panel-do">
+      <div class="card-grid">
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--coral)"></div>
+          <div class="card-body">
+            <div class="card-cat">Iconic Experience</div>
+            <div class="card-name">Freeman Park</div>
+            <div class="card-tagline">Drive on the beach · 4WD required · Permit required</div>
+            <p class="card-desc">Drive your 4WD vehicle right onto the beach at the northern end of the island. Fire pits at night, pelicans by day. Let tires down to ~20 PSI before hitting sand.</p>
+            <div class="card-tags"><span class="tag">4WD</span><span class="tag">Permit</span><span class="tag">Must Do</span></div>
+          </div>
+        </div>
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--teal)"></div>
+          <div class="card-body">
+            <div class="card-cat">Nature</div>
+            <div class="card-name">Carolina Beach State Park</div>
+            <div class="card-tagline">Venus flytraps · Hiking · Marsh trails</div>
+            <p class="card-desc">One of the only places on Earth to see wild Venus flytraps. Miles of trails, a marina, and some of the most beautiful natural scenery on the Cape Fear coast.</p>
+            <div class="card-tags"><span class="tag">Hiking</span><span class="tag">Nature</span><span class="tag">Hidden Gem</span></div>
+          </div>
+        </div>
+        <div class="place-card">
+          <div class="card-accent" style="background:#FFD966"></div>
+          <div class="card-body">
+            <div class="card-cat">Aquarium</div>
+            <div class="card-name">Fort Fisher Aquarium</div>
+            <div class="card-tagline">Sharks · Sea turtles · Half-day minimum</div>
+            <p class="card-desc">One of NC's best aquariums. Sharks, loggerhead sea turtles, native fish. A half-day easily disappears here, especially with kids who have any curiosity at all.</p>
+            <div class="card-tags"><span class="tag">Family</span><span class="tag">Education</span><span class="tag">Fort Fisher</span></div>
+          </div>
+        </div>
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--teal)"></div>
+          <div class="card-body">
+            <div class="card-cat">Wildlife</div>
+            <div class="card-name">Dolphin Spotting on the ICW</div>
+            <div class="card-tagline">Free · Dawn &amp; dusk · Intracoastal Waterway</div>
+            <p class="card-desc">Head to the ICW at dawn or dusk. Bottlenose dolphins feed in the channel daily. The bridge toward Wilmington is a great free viewing spot most people miss.</p>
+            <div class="card-tags"><span class="tag">Wildlife</span><span class="tag">Free</span><span class="tag">ICW</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIPS -->
+    <div class="tab-panel" id="panel-tips">
+      <div class="card-grid">
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--coral)"></div>
+          <div class="card-body">
+            <div class="card-cat">Freeman Park</div>
+            <div class="card-name">4WD on the Beach</div>
+            <div class="card-tagline">Real 4WD only · ~20 PSI · Drive at low tide</div>
+            <p class="card-desc">AWD won't cut it — you need actual 4WD. Let tires down to ~20 PSI before hitting sand. Drive at low tide. Always bring a pump to reinflate before leaving.</p>
+            <div class="card-tags"><span class="tag">Freeman Park</span><span class="tag">Pro Tip</span></div>
+          </div>
+        </div>
+        <div class="place-card">
+          <div class="card-accent" style="background:#FFD966"></div>
+          <div class="card-body">
+            <div class="card-cat">Timing</div>
+            <div class="card-name">Best Sunrise Spot</div>
+            <div class="card-tagline">North end · Before 6am · Zero crowds</div>
+            <p class="card-desc">Walk or drive to the far north end near Freeman Park before 6am. Wide open sand, not a soul around, and a Carolina sunrise that makes you understand why people never leave.</p>
+            <div class="card-tags"><span class="tag">Sunrise</span><span class="tag">Photography</span><span class="tag">North End</span></div>
+          </div>
+        </div>
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--teal)"></div>
+          <div class="card-body">
+            <div class="card-cat">Timing</div>
+            <div class="card-name">Beat the Summer Crowds</div>
+            <div class="card-tagline">Late May · Early September · Sweet spot</div>
+            <p class="card-desc">Late May and early September: warm water, fewer people, lower prices. The shoulder season here is genuinely special — the town feels like it belongs to whoever shows up.</p>
+            <div class="card-tags"><span class="tag">Shoulder Season</span><span class="tag">Best Value</span></div>
+          </div>
+        </div>
+        <div class="place-card">
+          <div class="card-accent" style="background:var(--coral)"></div>
+          <div class="card-body">
+            <div class="card-cat">Wildlife</div>
+            <div class="card-name">Ghost Crab Hunting</div>
+            <div class="card-tagline">After dark · Flashlight · Kids love it</div>
+            <p class="card-desc">After dark, grab a flashlight and head to the waterline. Ghost crabs scatter when you hit them with light. Fast, translucent, wild. A CB night tradition for every family.</p>
+            <div class="card-tags"><span class="tag">Night</span><span class="tag">Kids</span><span class="tag">Free</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ MUSIC & EVENTS ━━━ -->
+<section id="events">
+  <div class="container">
+    <p class="section-eyebrow">Live Music &amp; Events</p>
+    <h2 class="section-title">What's Happening on the Island</h2>
+    <p class="section-lead">Community events, live music, festivals, and local happenings. Submit your event using the contact form below.</p>
+    <div class="events-grid" id="events-grid">
+      <div class="event-card">
+        <div class="event-date"><div class="mo">Jun</div><div class="d">7</div></div>
+        <div class="event-info">
+          <div class="event-name">The Embers feat. Craig Woolard</div>
+          <div class="event-venue">Shuckin' Shack Oyster Bar · 8pm</div>
+          <span class="event-badge badge-music">Live Music</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date"><div class="mo">Jun</div><div class="d">14</div></div>
+        <div class="event-info">
+          <div class="event-name">Carolina Beach Music Festival</div>
+          <div class="event-venue">Lake Park · All Day</div>
+          <span class="event-badge badge-fest">Festival</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date"><div class="mo">Jun</div><div class="d">18</div></div>
+        <div class="event-info">
+          <div class="event-name">Trivia Night</div>
+          <div class="event-venue">Ol' Luther's · 7pm</div>
+          <span class="event-badge badge-comm">Community</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date"><div class="mo">Jun</div><div class="d">21</div></div>
+        <div class="event-info">
+          <div class="event-name">Sea Turtle Nest Watch Volunteer Night</div>
+          <div class="event-venue">CB Beach Access · Dusk</div>
+          <span class="event-badge badge-comm">Community</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date"><div class="mo">Jun</div><div class="d">28</div></div>
+        <div class="event-info">
+          <div class="event-name">4th of July Weekend Kickoff · Live Band</div>
+          <div class="event-venue">The Boardwalk · 7pm</div>
+          <span class="event-badge badge-music">Live Music</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date"><div class="mo">Jul</div><div class="d">4</div></div>
+        <div class="event-info">
+          <div class="event-name">4th of July Fireworks</div>
+          <div class="event-venue">Carolina Beach · Oceanfront · Dark</div>
+          <span class="event-badge badge-fest">Festival</span>
+        </div>
+      </div>
+    </div>
+    <div class="events-note">
+      📅 <strong>Know about an event?</strong> Use the contact form below and we'll add it to the calendar.
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ COMMUNITY ━━━ -->
+<section id="community">
+  <div class="container">
+    <p class="section-eyebrow">For Locals &amp; Regulars</p>
+    <h2 class="section-title">The Community</h2>
+    <p class="section-lead">This isn't just a vacation spot. It's a town with a pulse, a culture, and people who keep its soul alive year after year.</p>
+    <div class="community-grid">
+      <div class="comm-card">
+        <div class="comm-icon">🎵</div>
+        <div class="comm-title">Live Music Scene</div>
+        <p class="comm-desc">CB has a real live music culture — beach music, shag dancing, local bands on weeknights. The Shuckin' Shack and boardwalk bars keep it alive all summer long.</p>
+      </div>
+      <div class="comm-card">
+        <div class="comm-icon">🎣</div>
+        <div class="comm-title">The Fishing Community</div>
+        <p class="comm-desc">Surf fishermen, offshore captains, and pier regulars who carry irreplaceable knowledge of these waters. One of the most tight-knit communities on the coast.</p>
+      </div>
+      <div class="comm-card">
+        <div class="comm-icon">🐢</div>
+        <div class="comm-title">Sea Turtle Watch</div>
+        <p class="comm-desc">Local volunteers monitor nesting sea turtles on CB beaches every summer. One of the most beautiful quiet acts of community stewardship on the whole island.</p>
+      </div>
+      <div class="comm-card">
+        <div class="comm-icon">🏄</div>
+        <div class="comm-title">Surf &amp; Water Culture</div>
+        <p class="comm-desc">A real surf community built over generations. Dawn patrol sessions, ICW paddleboard races, and a deep connection to the water that shapes everyone who lives here.</p>
+      </div>
+      <div class="comm-card">
+        <div class="comm-icon">🎨</div>
+        <div class="comm-title">Local Artists</div>
+        <p class="comm-desc">Painters, photographers, and craftspeople who draw constant inspiration from the light and landscape here. The boardwalk and local shops are full of their work.</p>
+      </div>
+      <div class="comm-card">
+        <div class="comm-icon">🍽</div>
+        <div class="comm-title">The Restaurant Community</div>
+        <p class="comm-desc">The restaurant and bar owners here know and support each other. That cooperative spirit makes this a place where small independent businesses genuinely thrive.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ PHOTO STRIP ━━━ -->
+<div class="photo-strip">
+  <div class="photo-strip-inner">
+    <p class="section-eyebrow" style="justify-content:center">From the Island</p>
+    <h2 class="section-title">Your Photos Here</h2>
+    <p style="color:var(--muted);font-size:0.88rem;margin-top:0.4rem;">Drop your favorite CB shots and we'll build a real photo wall.</p>
+    <div class="photo-grid">
+      <div class="photo-slot"><div class="photo-slot-icon">📸</div><div class="photo-slot-text">Add Photo</div></div>
+      <div class="photo-slot"><div class="photo-slot-icon">📸</div><div class="photo-slot-text">Add Photo</div></div>
+      <div class="photo-slot"><div class="photo-slot-icon">📸</div><div class="photo-slot-text">Add Photo</div></div>
+      <div class="photo-slot"><div class="photo-slot-icon">📸</div><div class="photo-slot-text">Add Photo</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━ NEWS ━━━ -->
+<section id="news">
+  <div class="container">
+    <p class="section-eyebrow">Carolina Beach Only</p>
+    <h2 class="section-title">Local News</h2>
+    <p class="section-lead">Community stories and local business news. No politicians. No city hall spin. No Wilmington.</p>
+    <div class="news-grid" id="news-grid">
+      <div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--muted);">Loading the latest from Carolina Beach…</div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ ABOUT ━━━ -->
+<section id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div>
+        <p class="section-eyebrow">Why This Site Exists</p>
+        <h2 class="section-title">We Keep Coming Back.<br>Every Single Year.</h2>
+        <p class="about-body">
+          Carolina Beach isn't just a place on a map. It's the smell of sunscreen and salt air in the morning. It's Britt's donuts eaten every single day for breakfast. It's kids chasing ghost crabs at midnight and dolphins surfacing in the ICW at sunrise.<br><br>
+          This site was built out of pure love for this town — its people, its businesses, its boardwalk culture, and the fiercely loyal community that keeps its soul alive year after year.<br><br>
+          Whether you're a first-timer or a decades-long regular: <strong style="color:white">you belong here.</strong>
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat"><span class="stat-num">1939</span><div class="stat-lbl">Britt's Est.</div></div>
+        <div class="stat"><span class="stat-num">∞</span><div class="stat-lbl">Good Memories</div></div>
+        <div class="stat"><span class="stat-num">🌊</span><div class="stat-lbl">Miles of Shore</div></div>
+        <div class="stat"><span class="stat-num">☀️</span><div class="stat-lbl">Days of Sun</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ CONTACT ━━━ -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div>
+        <p class="section-eyebrow">Get Involved</p>
+        <h2 class="section-title">Know a great spot?<br>Tell us.</h2>
+        <p class="contact-body">Got a local business to feature? An event to add to the calendar? A story that captures the spirit of CB? This site belongs to the community.</p>
+        <div class="contact-ways">
+          <div class="contact-way"><div class="way-icon">📍</div><span>Suggest a business or spot</span></div>
+          <div class="contact-way"><div class="way-icon">🎵</div><span>Submit an event or show</span></div>
+          <div class="contact-way"><div class="way-icon">📸</div><span>Share your CB photos</span></div>
+          <div class="contact-way"><div class="way-icon">✍️</div><span>Submit a community story</span></div>
+        </div>
+      </div>
+      <div>
+        <form id="contact-form" netlify name="contact" method="POST">
+          <input type="hidden" name="form-name" value="contact" />
+          <div class="form-group"><input type="text" name="name" placeholder="Your Name" required /></div>
+          <div class="form-group"><input type="email" name="email" placeholder="Your Email" required /></div>
+          <div class="form-group"><input type="text" name="subject" placeholder="What's this about? (Event, Business, Story…)" /></div>
+          <div class="form-group"><textarea name="message" placeholder="Tell us about it…" required></textarea></div>
+          <button type="submit" class="btn-submit">Send It →</button>
+        </form>
+        <div class="form-success" id="form-success">✓ Got it — thanks for the love.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━ FOOTER ━━━ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">I <span class="heart">♥</span> CBNC</div>
+      <div class="footer-tagline">Carolina Beach, North Carolina — Always &amp; Forever</div>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="#guide">Guide</a></li>
+      <li><a href="#events">Music &amp; Events</a></li>
+      <li><a href="#community">Community</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-copy">© 2025 ilovecbnc.com · Made with ♥ by a family that never wants to leave · Not affiliated with any government entity.</div>
+</footer>
+
+<!-- ━━━ AUDIO PLAYER — uncomment when you have the mp3 ━━━ -->
+<!--
+<div class="audio-bar" id="audio-bar">
+  <button class="audio-btn" id="audio-play-btn" onclick="togglePlay()">▶</button>
+  <div class="audio-info">
+    <div class="audio-title">Song Title Here</div>
+    <div class="audio-artist">Artist Name · ilovecbnc.com</div>
+  </div>
+  <div class="audio-progress">
+    <div class="progress-bar" id="progress-bar" onclick="seekAudio(event)">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <div class="audio-time" id="audio-time">0:00</div>
+  </div>
+  <div class="audio-vol">
+    <span style="font-size:0.8rem">🔊</span>
+    <input type="range" id="vol-slider" min="0" max="1" step="0.05" value="0.6"
+           oninput="setVolume(this.value)" />
+  </div>
+  <button class="audio-close" onclick="closePlayer()">✕</button>
+</div>
+<audio id="site-audio" src="/audio/song.mp3" preload="none"></audio>
+-->
+
+<script>
+  /* ━━━ TABS ━━━ */
+  function switchTab(btn, id) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + id).classList.add('active');
+  }
+
+  /* ━━━ AUDIO — uncomment when ready ━━━ */
+  /*
+  const audio   = document.getElementById('site-audio');
+  const bar     = document.getElementById('audio-bar');
+  const playBtn = document.getElementById('audio-play-btn');
+  const fill    = document.getElementById('progress-fill');
+  const timeEl  = document.getElementById('audio-time');
+  let unlocked  = false;
+
+  function unlockAndPlay() {
+    if (unlocked) return;
+    unlocked = true;
+    audio.volume = 0.55;
+    audio.play().catch(() => {});
+    bar.classList.add('visible');
+    playBtn.textContent = '⏸';
+  }
+
+  ['click','scroll','touchstart'].forEach(e =>
+    document.addEventListener(e, unlockAndPlay, { once: true })
+  );
+
+  audio.addEventListener('timeupdate', () => {
+    if (!audio.duration) return;
+    fill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+    const m = Math.floor(audio.currentTime / 60);
+    const s = Math.floor(audio.currentTime % 60).toString().padStart(2,'0');
+    timeEl.textContent = m + ':' + s;
+  });
+
+  function togglePlay() {
+    if (audio.paused) { audio.play(); playBtn.textContent = '⏸'; }
+    else { audio.pause(); playBtn.textContent = '▶'; }
+  }
+  function seekAudio(e) {
+    const pct = e.offsetX / document.getElementById('progress-bar').offsetWidth;
+    audio.currentTime = pct * audio.duration;
+  }
+  function setVolume(v) { audio.volume = v; }
+  function closePlayer() { audio.pause(); bar.classList.remove('visible'); }
+  */
+
+  /* ━━━ NEWS ━━━ */
+  const BLOCK = [
+    'mayor','city council','councilman','councilwoman','councilmember',
+    'town council','commissioner','alderman','municipal','city hall',
+    'ordinance','rezoning','zoning','ballot','election','vote',
+    'incumbent','wilmington','new hanover county','county commission',
+    'board of','public hearing','annexation'
+  ];
+
+  function blocked(a) {
+    const t = ((a.title||'') + ' ' + (a.description||'')).toLowerCase();
+    return BLOCK.some(k => t.includes(k));
+  }
+
+  async function loadNews() {
+    const grid = document.getElementById('news-grid');
+    try {
+      const res = await fetch('/news.json');
+      if (!res.ok) throw new Error();
+      const articles = await res.json();
+      const clean = articles.filter(a => !blocked(a)).slice(0, 9);
+      if (clean.length) {
+        grid.innerHTML = clean.map(a => `
+          <div class="news-card">
+            <div class="news-source">${esc(a.source?.name||'Carolina Beach')}</div>
+            <div class="news-title"><a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.title)}</a></div>
+            ${a.description?`<p class="news-desc">${esc(a.description.slice(0,130))}…</p>`:''}
+            <div class="news-date">${fmtDate(a.publishedAt)}</div>
+          </div>`).join('');
+        return;
+      }
+    } catch {}
+    grid.innerHTML = [
+      { s:'Star News Online', t:'Boardwalk events ramp up for summer season',       d:'Local vendors and entertainment acts line up for a record summer on the island.',        dt:'May 15, 2025' },
+      { s:'Port City Daily',  t:'Freeman Park beach permit process opens for 2025', d:'New hangtag permits go on sale — grab them early before summer crowds arrive.',          dt:'May 10, 2025' },
+      { s:'WECT News 6',      t:'Sea turtle nesting season begins on CB shores',    d:'Volunteer monitors spotted the first nest of the season over the weekend.',               dt:'May 8, 2025'  },
+      { s:'CB Community',     t:'New seafood spot to open on the boardwalk',        d:'A longtime local family brings a new concept to a long-empty boardwalk space.',          dt:'May 5, 2025'  },
+      { s:'Star News Online', t:'Venus flytrap bloom peaks at CB State Park',       d:'Botanists and visitors arrive each spring to see wild populations in native habitat.',    dt:'Apr 28, 2025' },
+      { s:'Port City Daily',  t:'Dolphin sightings increase along the ICW',         d:'Marine biologists say the bottlenose dolphin population is having a strong spring.',     dt:'Apr 20, 2025' },
+    ].map(a=>`
+      <div class="news-card">
+        <div class="news-source">${a.s}</div>
+        <div class="news-title">${a.t}</div>
+        <p class="news-desc">${a.d}</p>
+        <div class="news-date">${a.dt}</div>
+      </div>`).join('');
+  }
+
+  /* ━━━ EVENTS ━━━ */
+  async function loadEvents() {
+    try {
+      const res = await fetch('/events.json');
+      if (!res.ok) throw new Error();
+      const events = await res.json();
+      if (!events.length) return;
+      document.getElementById('events-grid').innerHTML = events.map(e => `
+        <div class="event-card">
+          <div class="event-date">
+            <div class="mo">${esc(e.month)}</div>
+            <div class="d">${esc(String(e.day))}</div>
+          </div>
+          <div class="event-info">
+            <div class="event-name">${esc(e.name)}</div>
+            <div class="event-venue">${esc(e.venue)}${e.time?' · '+esc(e.time):''}</div>
+            <span class="event-badge badge-${esc(e.type||'music')}">${esc(e.label||'Event')}</span>
+          </div>
+        </div>`).join('');
+    } catch {}
+  }
+
+  function esc(s) {
+    return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function fmtDate(s) {
+    if (!s) return '';
+    try { return new Date(s).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}); }
+    catch { return s; }
+  }
+
+  loadEvents();
+  loadNews();
+
+  /* ━━━ CONTACT FORM ━━━ */
+  document.getElementById('contact-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    await fetch('/', { method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(new FormData(e.target)).toString() });
+    e.target.style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
