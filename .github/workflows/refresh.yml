@@ -21,10 +21,10 @@ jobs:
           key = os.environ["NEWS_API_KEY"]
 
           QUERIES = [
-            '"Carolina Beach" NC',
-            '"Carolina Beach" "North Carolina"',
-            '"Freeman Park" "Carolina Beach"',
-            '"Carolina Beach" beach boardwalk',
+            '"Carolina Beach" NC boardwalk',
+            '"Carolina Beach" NC restaurant',
+            '"Carolina Beach" NC community',
+            '"Carolina Beach" NC beach summer',
           ]
 
           BLOCK_KEYWORDS = [
@@ -33,13 +33,19 @@ jobs:
             'ordinance', 'rezoning', 'zoning', 'ballot', 'election', 'vote',
             'incumbent', 'wilmington', 'new hanover county', 'county commission',
             'board of', 'public hearing', 'annexation',
+            'shooting', 'murder', 'crime', 'arrest', 'police', 'officer',
+            'court', 'trial', 'lawsuit', 'charged', 'suspect', 'killed',
+            'accident', 'crash', 'death', 'died', 'hurricane', 'storm damage',
+            'piracy', 'torrent', 'download', 'episode', 'season', 'series',
+            'fox news', 'new york post', 'breitbart', 'dailymail',
           ]
 
           def is_blocked(article):
             text = (
               (article.get('title') or '') + ' ' +
               (article.get('description') or '') + ' ' +
-              (article.get('content') or '')
+              (article.get('content') or '') + ' ' +
+              (article.get('source', {}).get('name') or '')
             ).lower()
             return any(kw in text for kw in BLOCK_KEYWORDS)
 
