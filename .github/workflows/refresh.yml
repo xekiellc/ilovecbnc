@@ -99,3 +99,15 @@ jobs:
           git add news.json
           git diff --staged --quiet || git commit -m "chore: refresh CB news $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push
+
+      - name: Post to Voxxee
+        run: |
+          curl -s -X POST https://xenchee.netlify.app/.netlify/functions/pipeline-post \
+            -H "Content-Type: application/json" \
+            -H "x-pipeline-secret: ${{ secrets.PIPELINE_SECRET }}" \
+            -d '{
+              "slug": "i-love-cbnc",
+              "title": "🏖️ I Love Carolina Beach — Latest Local News",
+              "summary": "Fresh news, events, and community updates from Carolina Beach, NC.",
+              "url": "https://ilovecbnc.com"
+            }'
