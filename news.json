@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "title": "Show HN: Simple news aggregator with source bias meters",
+    "url": "https://unbiasthenews.com",
+    "source": {
+      "id": null,
+      "name": "Unbiasthenews.com"
+    },
+    "publishedAt": "2026-05-29T18:21:24Z",
+    "description": "Article URL: https://unbiasthenews.com\nComments URL: https://news.ycombinator.com/item?id=48327194\nPoints: 2\n# Comments: 0"
+  }
+]
